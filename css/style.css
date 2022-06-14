@@ -1,9 +1,10 @@
-p 
+/*p 
 {
 
     position: absolute;
     left: 42.43%;
     right: 42.36%;
+    top: 15.15%;
     bottom: 15.15%;
     
     font-family: 'Inter';
@@ -14,8 +15,22 @@ p
     
     color: #000000;
 }
-
+*/
 div{
+    position: absolute;
+    left: 42.43%;
+    right: 42.36%;
+    top: 15.15%;
+    bottom: 15.15%;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 39px;
+    
+    color: #000000;
+
     box-sizing: border-box;
 
     position: absolute;
