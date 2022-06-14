@@ -1,0 +1,49 @@
+p 
+{
+
+    position: absolute;
+    left: 42.43%;
+    right: 42.36%;
+    top: 15.15%;
+    bottom: 15.15%;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 39px;
+    
+    color: #000000;
+}
+
+div{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 1440px;
+    height: 66px;
+    left: 0px;
+    top: 958px;
+    
+    border: 1px solid #000000;
+    
+    
+    /* Rectangle 2 */
+    
+    box-sizing: border-box;
+    
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    
+    background: #FFA800;
+    border: 3px solid #FF7A00;
+}
+
+
+
+
+
+
