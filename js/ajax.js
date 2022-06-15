@@ -56,3 +56,13 @@ function httpErrors(errorCode) {
         }, 5000);
     }
 }
+
+function display_connexion(output) {
+    let mail = document.getElementById('form3Example3cg').value;
+    if (output == false) {
+        document.getElementById('login_failed').innerHTML = "Failed at login..."
+    } else {
+        document.location.href = ""; // remplacer ici
+    }
+
+}
