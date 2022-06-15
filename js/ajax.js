@@ -58,11 +58,16 @@ function httpErrors(errorCode) {
 }
 
 function display_connexion(output) {
-    let mail = document.getElementById('form3Example3cg').value;
-    if (output == false) {
-        document.getElementById('login_failed').innerHTML = "Failed at login..."
-    } else {
-        document.location.href = ""; // remplacer ici
-    }
+    console.log(output);
+    // let mail = document.getElementById('form3Example3cg').value;
+    // if (output == false) {
+    //     document.getElementById('login_failed').innerHTML = "Failed at login..."
+    // } else {
+    //     // document.location.href = "";
+    // }
 
+}
+
+function register(output) {
+    console.log(output);
 }
