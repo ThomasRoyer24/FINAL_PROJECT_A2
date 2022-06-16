@@ -20,7 +20,7 @@ return $conn;
 function request_connection($db,$mail,$password){
     try {
 
-    $request = "SELECT username.mail, username.password FROM username WHERE (username.mail = :mail AND username.password = :password)";
+    $request = "SELECT username.mail FROM username WHERE (username.mail = :mail AND username.password = :password)";
     $statement = $db->prepare($request);
     $statement->bindParam(':mail', $mail);
     $statement->bindParam(':password', $password);

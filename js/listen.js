@@ -1,8 +1,8 @@
-$('#search_id').on('click', () => {
+$('#connexion_buttom').on('click', () => {
 
-    let mail = document.getElementById('').value; // a remplacer par les id
-    let password = document.getElementById('').value;// a remplacer par les id
-    ajaxRequest('GET', `request.php/login/?mail=${mail}&password=${password}`, display_connexion);
+    let mail = document.getElementById('mail').value; // a remplacer par les id
+    let password = document.getElementById('password').value;// a remplacer par les id
+    ajaxRequest('GET', `../php/request.php/login/?mail=${mail}&password=${password}`, display_connexion);
 })
 
 $('#create_account_buttom').on('click', () => {
