@@ -9,14 +9,35 @@
 </head>
 
 
-<body>
-    <nav class="navbar navbar-expand-lg" style = "background: #FFA800 ; border : 3px solid #FF7A00"  >
+<body style = "background: #4F5B5E;">
+<nav class="navbar navbar-expand-lg" style = "background: #FFA800 ; border : 3px solid #FF7A00"  >
         <div class="container-fluid">
             <img src="../images/coupe.png" width="4%" height="100%">
+            <div style = "margin-left: auto;">
+                <a href = "choix.php" class="btn btn-primary" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Menu</a>
+                <a href = "explorer.php" class="btn btn-primary" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Explorer</a>
+                <a href = "connexion.php" class="btn btn-primary" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Déconnection</a>
+            </div>
         </div>
     </nav>
+    <br>
 
-
+    <div class="mask d-flex align-items-center h-150 gradient-custom-3">
+        <div class="container"
+            style="border-radius: 10px; background-color: #FFFFFF; top : 0px; margin-left: auto; margin-right: auto;">
+            <div class="card-body p-4">
+                <h3 class="text-uppercase text-center mb-5" style="color: #FFA800;">Match sélectionné</h3>
+                <img src=""> <h5 style="color: #FFA800;">Sport : </h5>
+                <img src=""> <h5 style="color: #FFA800;">Ville : </h5>
+                <img src=""> <h5 style="color: #FFA800;">Date/Heure : </h5>
+                <img src=""> <h5 style="color: #FFA800;">Adresse : </h5>
+                <img src=""> <h5 style="color: #FFA800;">Prix :</h5>
+                <hr>
+                <img src=""> <h5 style="color: #FFA800;">Organisateur : </h5>
+                <img src=""> <h5 style="color: #FFA800;">Joueurs : </h5>
+            </div>   
+        </div>
+    </div>
 
 </body>
 
