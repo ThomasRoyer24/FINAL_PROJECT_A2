@@ -36,6 +36,8 @@ function request_connection($db,$mail,$password){
     return !empty($result) ? true : false;
 }
 
+
+
 //** Function that add a user to the database */
 //** Args => Mail | Last_name | first_name | city | Password */
 

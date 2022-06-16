@@ -28,6 +28,7 @@
 
     if($requestMethod == 'GET' and $requestRessource == 'login'){
             $mail = $_GET['mail'];
+            $password = $_GET['password'];
             $responce = request_connection($db,$mail,$password);
             $_SESSION['mail'] = $mail;
             echo json_encode($responce);           
