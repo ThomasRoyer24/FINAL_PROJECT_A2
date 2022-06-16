@@ -27,14 +27,22 @@
             style="border-radius: 10px; background-color: #FFFFFF; top : 0px; margin-left: auto; margin-right: auto;">
             <div class="card-body p-4">
                 <h3 class="text-uppercase text-center mb-5" style="color: #FFA800;">Match sélectionné</h3>
-                <img src=""> <h5 style="color: #FFA800;">Sport : </h5>
-                <img src=""> <h5 style="color: #FFA800;">Ville : </h5>
-                <img src=""> <h5 style="color: #FFA800;">Date/Heure : </h5>
-                <img src=""> <h5 style="color: #FFA800;">Adresse : </h5>
-                <img src=""> <h5 style="color: #FFA800;">Prix :</h5>
+                <h5 style="color: #FFA800;"><img src="../images/logos/cuptest.svg"> Sport : </h5>
+                <h5 style="color: #FFA800;"><img src="../images/logos/buildtest.svg"> Ville : </h5>
+                <h5 style="color: #FFA800;"><img src="../images/logos/timetest.svg"> Date/Heure : </h5>
+                <h5 style="color: #FFA800;"><img src="../images/logos/loctest.svg"> Adresse : </h5>
+                <h5 style="color: #FFA800;"><img src="../images/logos/moneytest.svg"> Prix :</h5>
                 <hr>
-                <img src=""> <h5 style="color: #FFA800;">Organisateur : </h5>
-                <img src=""> <h5 style="color: #FFA800;">Joueurs : </h5>
+                <h5 style="color: #FFA800;"><img src="../images/logos/crowntest.svg"> Organisateur : </h5>
+                <h5 style="color: #FFA800;"><img src="../images/logos/persontest.svg"> Joueurs : </h5>
+                <div class="container" style="border-radius: 5px; background-color: #4F5B5E; top : 0px; margin-left: auto; margin-right: auto;">
+                    
+                <p style = "color : white;"> ---------------  PHOTOS A METTRE ICI  --------------- </p>
+
+
+
+
+                </div>
             </div>   
         </div>
     </div>
