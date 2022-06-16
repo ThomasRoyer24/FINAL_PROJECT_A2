@@ -4,7 +4,7 @@
     error_reporting(E_ALL);
 
     session_start();
-    $db = dbConnect(); // Database connection
+    session_destroy();
 ?>
 
 
