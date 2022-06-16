@@ -6,6 +6,14 @@
     <link href="../css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Explorer</title>
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"
+        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+        integrity="sha256-x3YZWtRjM8bJqf48dFAv/qmgL68SI4jqNWeSLMZaMGA=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha256-WqU1JavFxSAMcLP2WIOI+GB2zWmShMI82mTpLDcqFUg=" crossorigin="anonymous"></script>
+
 </head>
 
 
@@ -32,7 +40,7 @@
                         <h3 class="text-uppercase text-center mb-5" style="color: #FFFFFF;">Explorer</h3>
                         <div class="row">
                             <div class="col-12">
-                                <input class="form-control" type="text" placeholder="Ville" id="    ">
+                                <input class="form-control" type="text" placeholder="Ville" id="city">
                             </div>
                             <br><br>
                             <div class="row">
@@ -40,26 +48,25 @@
                             </div>
                             <br><br>
                             <div class="col-12">
-                                <input class="form-control" type="text" placeholder="Sport" id="">
+                                <input class="form-control" type="text" placeholder="Sport" id="sport">
                             </div>
                             <br><br>
                             <div class="row">
                                 <p></p>
                             </div>
-                            <br><br>
+                            <br><br><br>
                             <div class="col-12">
-                                <input class="form-control" type="text" placeholder="Période" id="">
+                                <select id = "time" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                    <option value="7">+ 7 jours</option>
+                                    <option value="15">+ 15 jours</option>
+                                    <option value="30">+ 30 jours</option>
+                                </select>
                             </div>
-                            <br><br>
-                            <div class="row">
-                                <p></p>
-                            </div>
-                            <br><br>
-                            
+       
                             <div class="col-12">
-                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                    <option value="0">Disponible</option>
-                                    <option value="1">Complet</option>
+                                <select id="match_status" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                    <option value="true">Disponible</option>
+                                    <option value="false">Complet</option>
                                 </select>
                             </div>
                             <br><br>
@@ -68,7 +75,7 @@
                             </div>
                             <br><br>
     
-                            <button id="create_account_buttom" class="btn btn-primary" type="submit"
+                            <button id="search" class="btn btn-primary" type="submit"
                                 style="background: #FFA800; margin-left: auto; margin-right: auto;">Rechercher</button>
                         </div>
                     </div>
@@ -120,4 +127,7 @@
     </div>
 </footer>
     
+<script src="../js/ajax.js"></script>
+<script src="../js/listen.js"></script>
+
 </html>

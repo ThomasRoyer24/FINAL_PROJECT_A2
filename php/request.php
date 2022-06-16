@@ -33,4 +33,15 @@
             $_SESSION['mail'] = $mail;
             echo json_encode($responce);           
     }
+
+    if ($requestMethod == 'GET' and $requestRessource == 'search') {
+        //gestion timestant
+        $date = time();
+        $date += $_GET['time']*86400;
+        $city = $_GET['city'];
+        $sport = $_GET['sport'];
+        $status = $_GET['match_status'];
+        $responce = search_match($db,$city,$sport,$date,$status);
+        echo json_encode($responce);
+    }
 ?>

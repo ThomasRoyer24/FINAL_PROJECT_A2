@@ -62,7 +62,7 @@ function add_user($db,$mail,$last_name,$first_name,$city,$password){
         $is_registered = true;
     }
     
-    $id_city = get_id_city($db,$city)['id_city'];
+    $id_city = get_id_city($db,$city,true)['id_city'];
 
     if (!$is_registered) {
         try {
@@ -94,7 +94,7 @@ function add_user($db,$mail,$last_name,$first_name,$city,$password){
   }
 }
 
-function get_id_city($db,$name){
+function get_id_city($db,$name,$bool){
     try {
 
         $request = "SELECT id_city from city where name = :name";
@@ -108,9 +108,11 @@ function get_id_city($db,$name){
             return false;
         }
 
-        if (empty($result)) {
+        if (empty($result) && $bool == true) {
             set_city($db,$name);
             $result = get_id_city($db,$name);
+        }else if(empty($result) && $bool == false){
+            return NULL;
         }
             return $result;
         
@@ -182,4 +184,26 @@ function get_information_user($db,$id){
         return !empty($result) ? true : false;
 }
 
+function search_match($db,$city,$sport,$date,$status){
+    try {
+
+        $id_city = get_id_city($db,$city,false);
+
+        $request = "SELECT * FROM match WHERE (:city like id_city and :sport like sport and :date <= date_match and :status == (max_number_players == actual_number_players))";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':city', $id_city);
+        $statement->bindParam(':sport', $sport);
+        $statement->bindParam(':date', $date);
+        $statement->bindParam(':status', $status);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+    
+        return $result;
+}
 ?>

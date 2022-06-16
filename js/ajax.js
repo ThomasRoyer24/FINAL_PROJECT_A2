@@ -57,17 +57,6 @@ function httpErrors(errorCode) {
     }
 }
 
-function display_connexion(output) {
-    console.log(output);
-    // let mail = document.getElementById('form3Example3cg').value;
-    // if (output == false) {
-    //     document.getElementById('login_failed').innerHTML = "Failed at login..."
-    // } else {
-    //     // document.location.href = "";
-    // }
-
-}
-
 function register(output) {
     if (output == true) {
         document.getElementById("error_message").innerHTML = "<span class=\"alert alert-success\" role=\"alert\">Votre compte à bien été crée</span>";
@@ -82,4 +71,7 @@ function display_connexion(output) {
     } else {
         document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">L'adresse mail ou le mot de passe est incorrect</span>";
     }
+}
+function displaySearch(output) {
+
 }
