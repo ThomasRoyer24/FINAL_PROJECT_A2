@@ -78,7 +78,7 @@ function register(output) {
 
 function display_connexion(output) {
     if (output == true) {
-        document.location.href = "../html/choix.html";
+        document.location.href = "../html/choix.php";
     } else {
         document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">L'adresse mail ou le mot de passe est incorrect</span>";
     }

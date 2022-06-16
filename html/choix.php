@@ -32,7 +32,7 @@
             <div class="card-body p-4">
                 <h3 class="text-uppercase text-center mb-5" style = "color: #FFFFFF;"> Que voulez vous faire ?</h3>  
                 <div class="row align-items-center h-100">
-                    <a href = "matchs.php" class="btn btn-primary" type="submit" style = "background: #FFA800; margin-left: auto; margin-right: auto;">Je veux jouer</a>
+                    <a href = "explorer.php" class="btn btn-primary" type="submit" style = "background: #FFA800; margin-left: auto; margin-right: auto;">Je veux jouer</a>
                     <br><br><br>
                 </div>
                 <div class="row align-items-center h-100">

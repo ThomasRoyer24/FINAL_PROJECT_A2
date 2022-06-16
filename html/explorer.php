@@ -14,9 +14,9 @@
         <div class="container-fluid">
             <img src="../images/coupe.png" width="4%" height="100%">
             <div style = "margin-left: auto;">
-                <button class="btn btn-primary" type="submit" style = "background: #4F5B5E; ">Menu</button>
-                <button class="btn btn-primary" type="submit" style = "background: #4F5B5E; ">Matchs</button>
-                <button class="btn btn-primary" type="submit" style = "background: #4F5B5E; ">Déconnection</button>
+                <a href = "choix.php" class="btn btn-primary" type="submit" style = "color:white;background: #4F5B5E; ">Menu</a>
+                <a href = "matchs.php" class="btn btn-primary" type="submit" style = "color:white;background: #4F5B5E; ">Matchs</a>
+                <a href = "connexion.php" class="btn btn-primary" type="submit" style = "color:white;background: #4F5B5E; ">Déconnection</a>
             </div>
         </div>
     </nav>
