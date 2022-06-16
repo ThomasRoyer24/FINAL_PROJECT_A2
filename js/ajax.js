@@ -69,5 +69,9 @@ function display_connexion(output) {
 }
 
 function register(output) {
-    console.log(output);
+    if (output == true) {
+        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-success\" role=\"alert\">Votre compte à bien été crée</span>";
+    } else {
+        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">L'adresse mail est déjà utilisée</span>";
+    }
 }

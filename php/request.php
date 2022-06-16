@@ -22,9 +22,16 @@
             $mail = $_POST['mail'];
             $password = $_POST['password'];
             $response = add_user($db,$mail,$last_name,$first_name,$city,$password);
-            echo json_encode($response);
+            echo json_encode($response['isSuccess']);
         }
     }
 
-    
+    if($requestMethod == 'GET' and $requestRessource == 'login'){
+        if ($_GET['mail'] != NULL && $_GET['paswword'] !=NULL) {
+            $mail = $_GET['mail'];
+            $password = $_GET['paswword'];
+            $responce = request_connection($db,$mail,$password);
+            echo json_encode($responce);
+        }
+    }
 ?>
