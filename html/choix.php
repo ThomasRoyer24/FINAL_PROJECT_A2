@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg" style = "background: #FFA800 ; border : 3px solid #FF7A00"  >
         <div class="container-fluid">
             <img src="../images/coupe.png" width="4%" height="100%">
-            <a href = "connexion.php" class="btn" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Déconnection</a>
+            <a href = "connexion.php" class="btn" type="submit" style = "color:white; background: #4F5B5E; margin-left: auto; ">Déconnection</a>
         </div>
     </nav>
     <br><br>
@@ -32,16 +32,16 @@
             <div class="card-body p-4">
                 <h3 class="text-uppercase text-center mb-5" style = "color: #FFFFFF;"> Que voulez vous faire ?</h3>  
                 <div class="row align-items-center h-100">
-                    <a href = "explorer.php" class="btn " type="submit" style = "background: #FFA800; margin-left: auto; margin-right: auto;">Je veux jouer</a>
+                    <a href = "explorer.php" class="btn " type="submit" style = "color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Je veux jouer</a>
                     <br><br><br>
                 </div>
                 <div class="row align-items-center h-100">
                     
-                    <a href = "organiser.php"  class="btn " type="submit" style = "background: #FFA800; margin-left: auto; margin-right: auto;">Je veux organiser</a>
+                    <a href = "organiser.php"  class="btn" type="submit" style = "color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Je veux organiser</a>
                     <br><br><br>
                 </div>
                 <div class="row align-items-center h-100">
-                    <a href = "profil.php" class="btn" type="submit" style = "background: #FFA800; margin-left: auto; margin-right: auto;">Mon profil</a>
+                    <a href = "profil.php" class="btn" type="submit" style = "color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Mon profil</a>
                     <br><br><br>
                 </div>
                 

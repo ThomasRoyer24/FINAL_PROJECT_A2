@@ -96,7 +96,7 @@
                             <br><br>
 
     
-                            <button id="create_match" class="btn" type="submit" style="background: #FFA800; margin-left: auto; margin-right: auto;">Créer</button>
+                            <button id="create_match" class="btn" type="submit" style="color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Créer</button>
                             
                         </div><br><div id="error_message"></div>
                     </div>

@@ -97,7 +97,7 @@
                                 <br><br>
 
         
-                                <button id="" class="btn" type="submit" style="background: #FFA800; margin-left: auto; margin-right: auto;">Modifier</button>
+                                <button id="" class="btn" type="submit" style="color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Modifier</button>
                             </div>
                         </div>
                     </div>

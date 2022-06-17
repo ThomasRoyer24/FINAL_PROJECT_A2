@@ -75,8 +75,7 @@
                             </div>
                             <br><br>
     
-                            <button id="search" class="btn" type="submit"
-                                style="background: #FFA800; margin-left: auto; margin-right: auto;">Rechercher</button>
+                            <button id="search" class="btn" type="submit" style=" color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Rechercher</button>
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg" style="background: #FFA800 ; border : 3px solid #FF7A00">
         <div class="container-fluid">
             <img src="../images/coupe.png" width="4%" height="100%">
-            <a href="connexion.php" class="btn" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Se connecter</a>
+            <a href="connexion.php" class="btn" type="submit" style = " color:white; background: #4F5B5E; margin-left: auto; ">Se connecter</a>
         </div>
     </nav>
 
@@ -67,8 +67,7 @@
                             <input class="form-control" type="password" placeholder="Confirmation mot de passe" id="confirm_password">
                         </div>
                         <br><br>
-                        <button id="create_account_buttom" class="btn" type="submit"
-                            style="background: #FFA800; margin-left: auto; margin-right: auto;">Je m'inscris</button>
+                        <button id="create_account_buttom" class="btn" type="submit" style=" color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Je m'inscris</button>
                     </div>
                     <br>
                     <div id="error_message"></div>

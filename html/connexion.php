@@ -33,8 +33,7 @@
     <nav class="navbar navbar-expand-lg" style="background: #FFA800 ; border : 3px solid #FF7A00">
         <div class="container-fluid">
             <img src="../images/coupe.png" width="4%" height="100%">
-            <a href='inscription.php' class="btn" type="submit"
-                style="background: #4F5B5E; margin-left: auto; ">S'inscrire</a>
+            <a href='inscription.php' class="btn" type="submit" style=" color:white; background: #4F5B5E; margin-left: auto; ">S'inscrire</a>
 
         </div>
     </nav>
@@ -42,8 +41,7 @@
     <br><br>
 
     <div class="mask d-flex align-items-center h-150 gradient-custom-3">
-        <div class="container"
-            style="border-radius: 10px; background-color: #4F5B5E; top : 0px; margin-left: auto; margin-right: auto;">
+        <div class="container" style="border-radius: 10px; background-color: #4F5B5E; top : 0px; margin-left: auto; margin-right: auto;">
             <div class="card-body p-4">
                 <h3 class="text-uppercase text-center mb-5" style="color: #FFFFFF;">Connexion :</h3>
 
@@ -65,8 +63,7 @@
                     </div>
 
                     <br><br><br>
-                    <button class="btn" type="submit"
-                        style="background: #FFA800; margin-left: auto; margin-right: auto;" id = "connexion_buttom">Se connecter</button>
+                    <button class="btn" type="submit" style="color:white; background: #FFA800; margin-left: auto; margin-right: auto;" id = "connexion_buttom">Se connecter</button>
                 </div>
                 <br>
             <div id="error_message"></div>

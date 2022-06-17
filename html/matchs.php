@@ -14,9 +14,9 @@
         <div class="container-fluid">
             <img src="../images/coupe.png" width="4%" height="100%">
             <div style = "margin-left: auto;">
-                <a href = "choix.php" class="btn" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Menu</a>
-                <a href = "explorer.php" class="btn" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Explorer</a>
-                <a href = "connexion.php" class="btn" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Déconnection</a>
+                <a href = "choix.php" class="btn" type="submit" style = "color:white; background: #4F5B5E; margin-left: auto; ">Menu</a>
+                <a href = "explorer.php" class="btn" type="submit" style = "color:white; background: #4F5B5E; margin-left: auto; ">Explorer</a>
+                <a href = "connexion.php" class="btn" type="submit" style = "color:white; background: #4F5B5E; margin-left: auto; ">Déconnection</a>
                 
             </div>
         </div>

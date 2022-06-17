@@ -14,17 +14,16 @@
         <div class="container-fluid">
             <img src="../images/coupe.png" width="4%" height="100%">
             <div style = "margin-left: auto;">
-                <a href = "choix.php" class="btn" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Menu</a>
-                <a href = "explorer.php" class="btn" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Explorer</a>
-                <a href = "connexion.php" class="btn" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Déconnection</a>
+                <a href = "choix.php" class="btn" type="submit" style = " color:white; background: #4F5B5E; margin-left: auto; ">Menu</a>
+                <a href = "explorer.php" class="btn" type="submit" style = " color:white; background: #4F5B5E; margin-left: auto; ">Explorer</a>
+                <a href = "connexion.php" class="btn" type="submit" style = " color:white;background: #4F5B5E; margin-left: auto; ">Déconnection</a>
             </div>
         </div>
     </nav>
     <br>
 
     <div class="mask d-flex align-items-center h-150 gradient-custom-3">
-        <div class="container"
-            style="border-radius: 10px; background-color: #FFFFFF; top : 0px; margin-left: auto; margin-right: auto;">
+        <div class="container" style="border-radius: 10px; background-color: #FFFFFF; top : 0px; margin-left: auto; margin-right: auto;">
             
             <div class="card-body p-4 d-flex flex-column">
                 <h3 class="text-uppercase text-center mb-5" style="color: #FFA800;">Match sélectionné</h3>
@@ -42,7 +41,7 @@
                 
                 </div>
                 <br>
-                <button id="A-REMPLIR" class="btn justify-content-center" type="submit" style="background: #FFA800; margin-left: auto; margin-right: auto;">Je m'inscris</button>
+                <button id="A-REMPLIR" class="btn justify-content-center" type="submit" style="color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Je m'inscris</button>
             </div>   
         </div>
     </div>
