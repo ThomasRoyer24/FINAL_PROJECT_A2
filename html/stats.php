@@ -23,8 +23,7 @@
     <br>
     
     
-    <div class="d-flex m-2">
-
+    <div class="d-flex m-2 justify-content-center">
         <div class="container mx-2" style="border-radius: 10px; background-color: #FFFFFF; top : 50px; margin-left: auto; margin-right: auto;">
             <div class="card-body p-4">
                 <h3 class="text-uppercase text-center mb-5" style="color: #FFA800;">Informations Matchs</h3>
@@ -55,9 +54,6 @@
                 </table>
             </div>
         </div>
-    </div>
-
-
         <section class="centrage">
             <div class="mask d-flex align-items-center h-150 gradient-custom-3 mx-2">
                 <div class="container" style="border-radius: 10px; background-color: #FFFFFF; top : 50px; margin-left: auto; margin-right: auto;">
@@ -77,6 +73,12 @@
                     </div>
                 </div>
         </section>
+
+
+    </div>
+
+
+        
     </div>
 
 
