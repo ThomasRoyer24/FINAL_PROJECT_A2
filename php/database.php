@@ -67,18 +67,18 @@ function add_user($db,$mail,$last_name,$first_name,$city,$password){
         $is_registered = true;
     }
     
-    $id_city = get_id_city($db,$city,true)['id_city'];
+    $id_localisation = get_id_city($db,$city,true,NULL)['id_localisation'];
 
     if (!$is_registered) {
         try {
             
-            $request = "INSERT INTO username (mail, last_name, first_name, id_city,password,statistics) VALUES (:mail,:last_name, :first_name,:id_city,:password,0)";
+            $request = "INSERT INTO username (mail, last_name, first_name, id_localisation,password,statistics) VALUES (:mail,:last_name, :first_name,:id_localisation,:password,0)";
             $statement = $db->prepare($request);
 
             $statement->bindParam(':mail', $mail);
             $statement->bindParam(':last_name', $last_name);
             $statement->bindParam(':first_name', $first_name);
-            $statement->bindParam(':id_city',$id_city);
+            $statement->bindParam(':id_localisation',$id_localisation);
             $statement->bindParam(':password', $password);
             $statement->execute();
             $response['isSuccess'] = true;
@@ -99,44 +99,35 @@ function add_user($db,$mail,$last_name,$first_name,$city,$password){
   }
 }
 
-function get_id_city($db,$name,$bool){
-    try {
-
-        $request = "SELECT id_city from city where name = :name";
-        $statement = $db->prepare($request);
-        $statement->bindParam(':name', $name);
-        $statement->execute();  
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
-        }
-        catch (PDOException $exception){
-            error_log('Request error: '.$exception->getMessage());
-            return false;
-        }
-
-        if (empty($result) && $bool == true) {
-            set_city($db,$name);
-            $result = get_id_city($db,$name,false);
-        }else if(empty($result) && $bool == false){
-            return NULL;
-        }
-            return $result;
-        
+function get_id_city($db,$city,$bool,$adresse){
+        try {
+            if ($adresse == NULL) {
+                $request = "SELECT id_localisation from localisation where city = :city and adresse = is null";
+                $statement = $db->prepare($request);
+            }else{
+                $request = "SELECT id_localisation from localisation where city = :city and adresse = :adresse";
+                $statement = $db->prepare($request);
+                $statement->bindParam(':adresse', $adresse);
+            }
+            
+            $statement->bindParam(':city', $city);
+            $statement->execute();  
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            }
+            catch (PDOException $exception){
+                error_log('Request error: '.$exception->getMessage());
+                return false;
+            }
+    
+            if (empty($result) && $bool == true) {
+                set_localisation($db,$city);
+                $result = get_id_city($db,$city,false,$adresse);
+            }else if(empty($result) && $bool == false){
+                return NULL;
+            }
+                return $result;
 }
 
-function set_city($db,$name){
-    try {
-
-        $request = "INSERT INTO city (name) VALUES (:name)";
-        $statement = $db->prepare($request);
-        $statement->bindParam(':name', $name);
-        $statement->execute();  
-        
-        }
-        catch (PDOException $exception){
-            error_log('Request error: '.$exception->getMessage());
-            return false;
-        }
-}
 
 function update_stat_user($db,$id){
     try {
@@ -157,11 +148,11 @@ function create_match($db,$city,$sport,$max_number_players,$min_number_players,$
     if ($city != NULL && $sport!= NULL && $max_number_players!= NULL && $min_number_players != NULL && $duration != NULL && $price != NULL && $date_match != NULL ) {
        
         try {
-            $id_city = get_id_city($db,$city,true);
-            $id_user = $_SESSION['id_user'];
-            $request = "INSERT INTO match (id_user,id_city,sport,sport,actual_number_players,min_number_players,duration,price,date_match) VALUES(:id_user,:city,:sport,:max_number_player,0,:min_number_players,:duration,:date_match)";
+            $id_localisation = get_id_city($db,$city,true,NULL);
+            $id_user = 1;
+            $request = "INSERT INTO match (id_user,id_localisation,sport,sport,actual_number_players,min_number_players,duration,price,date_match) VALUES(:id_user,:id_localisation,:sport,:max_number_players,0,:min_number_players,:duration,:price,:date_match)";
             $statement = $db->prepare($request);
-            $statement->bindParam(':city', $id_city);
+            $statement->bindParam(':id_localisation', $id_localisation);
             $statement->bindParam(':id_user', $id_user);
             $statement->bindParam(':sport', $sport);
             $statement->bindParam(':max_number_players', $max_number_players);
@@ -242,10 +233,56 @@ function get_id_user($db,$mail){
         return $result;
 }
 
-// $request = "azert, tyui";
-// $request = explode(',', $request);
-// $requestRessource = array_shift($request);
 
-// echo $request[0];
+function set_localisation($db,$localisation){
+    $adresse = explode(',', $localisation);
+    $city = array_shift($adresse);
+    $adresse = $adresse[0];
+    try {
+        if($adresse == NULL){
+            $request = "INSERT INTO localisation (city,adresse) VALUES (:city, :adresse)";
+            $statement = $db->prepare($request);
+            $statement->bindParam(':adresse', $adresse);
+        }
+        else{
+            $request = "INSERT INTO localisation (city) VALUES (:city)";
+            $statement = $db->prepare($request);
+        }
+
+        $statement->bindParam(':city', $city);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+        // return get_id_city($db,$city,false,$adresse);
+
+}
+// $localisation = "gfdfgdf";
+
+// $adresse = explode(',', $localisation);
+// $city = array_shift($adresse);
+// $adresse = $adresse[0];
+
+// var_dump($city);
+// var_dump($adresse);
+
+function set_city($db,$name){
+    try {
+
+        $request = "INSERT INTO localisation (city) VALUES (:name)";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':name', $name);
+        $statement->execute();  
+        
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+}
 
 ?>
