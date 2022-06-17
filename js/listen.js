@@ -14,7 +14,7 @@ $('#create_account_buttom').on('click', () => {
     let last_name = document.getElementById('last_name').value;
     let password = document.getElementById('password').value;
     let confirm_password = document.getElementById('confirm_password').value;
-    let city = document.getElementById('city').value;
+    let city = document.getElementById('city_inscription').value;
 
     // recherche d'erreur et sinon requette ajax POST avec de la data 
     if ((mail != confirm_mail)) {
