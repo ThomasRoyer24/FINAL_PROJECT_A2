@@ -22,9 +22,9 @@
         <div class="container-fluid">
             <img src="../images/coupe.png" width="4%" height="100%">
             <div style = "margin-left: auto;">
-                <a href = "choix.php" class="btn btn-primary" type="submit" style = "color:white;background: #4F5B5E; ">Menu</a>
-                <a href = "matchs.php" class="btn btn-primary" type="submit" style = "color:white;background: #4F5B5E; ">Matchs</a>
-                <a href = "connexion.php" class="btn btn-primary" type="submit" style = "color:white;background: #4F5B5E; ">Déconnection</a>
+                <a href = "choix.php" class="btn" type="submit" style = "color:white;background: #4F5B5E; ">Menu</a>
+                <a href = "matchs.php" class="btn" type="submit" style = "color:white;background: #4F5B5E; ">Matchs</a>
+                <a href = "connexion.php" class="btn" type="submit" style = "color:white;background: #4F5B5E; ">Déconnection</a>
             </div>
         </div>
     </nav>
@@ -75,7 +75,7 @@
                             </div>
                             <br><br>
     
-                            <button id="search" class="btn btn-primary" type="submit"
+                            <button id="search" class="btn" type="submit"
                                 style="background: #FFA800; margin-left: auto; margin-right: auto;">Rechercher</button>
                         </div>
                     </div>

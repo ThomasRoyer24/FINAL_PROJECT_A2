@@ -33,7 +33,7 @@
     <nav class="navbar navbar-expand-lg" style="background: #FFA800 ; border : 3px solid #FF7A00">
         <div class="container-fluid">
             <img src="../images/coupe.png" width="4%" height="100%">
-            <a href='inscription.php' class="btn btn-primary" type="submit"
+            <a href='inscription.php' class="btn" type="submit"
                 style="background: #4F5B5E; margin-left: auto; ">S'inscrire</a>
 
         </div>
@@ -65,7 +65,7 @@
                     </div>
 
                     <br><br><br>
-                    <button class="btn btn-primary" type="submit"
+                    <button class="btn" type="submit"
                         style="background: #FFA800; margin-left: auto; margin-right: auto;" id = "connexion_buttom">Se connecter</button>
                 </div>
                 <br>

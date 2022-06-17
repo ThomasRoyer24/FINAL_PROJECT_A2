@@ -14,9 +14,9 @@
         <div class="container-fluid">
             <img src="../images/coupe.png" width="4%" height="100%">
             <div style = "margin-left: auto;">
-                <a href = "choix.php" class="btn btn-primary" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Menu</a>
-                <a href = "explorer.php" class="btn btn-primary" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Explorer</a>
-                <a href = "connexion.php" class="btn btn-primary" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Déconnection</a>
+                <a href = "choix.php" class="btn" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Menu</a>
+                <a href = "explorer.php" class="btn" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Explorer</a>
+                <a href = "connexion.php" class="btn" type="submit" style = "background: #4F5B5E; margin-left: auto; ">Déconnection</a>
             </div>
         </div>
     </nav>
@@ -42,7 +42,7 @@
                 
                 </div>
                 <br>
-                <button id="A-REMPLIR" class="btn btn-primary justify-content-center" type="submit" style="background: #FFA800; margin-left: auto; margin-right: auto;">Je m'inscris</button>
+                <button id="A-REMPLIR" class="btn justify-content-center" type="submit" style="background: #FFA800; margin-left: auto; margin-right: auto;">Je m'inscris</button>
             </div>   
         </div>
     </div>
