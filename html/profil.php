@@ -21,70 +21,87 @@
         </div>
     </nav>
     <br>
-    <section class="centrage">
-            <div class="mask d-flex align-items-center h-150 gradient-custom-3 mx-2">
-                <div class="container" style="border-radius: 10px; background-color: #4F5B5E; top : 50px; margin-left: auto; margin-right: auto;">
-                    <div class="card-body p-4">
-                        <h3 class="text-uppercase text-center mb-5" style="color: #FFFFFF;">Nom & Prénom</h3>
-                        
-                        <img class = "displayed" src = "../images/pdp/profilepicture.jpg"style = "display: block; margin-left: auto; margin-right: auto">
-                        <h6 style = "color :white">Nombre de maths joués :</h6>
-                        <hr>
-                        <div class="row">
-                            <h6 style = "color :white">Age :</h6>
-                            <div class="col-12">
-                                <input class="form-control" type="text" placeholder="" id="">
-                            </div>
-                            <br><br>
-                            <div class="row">
-                                <p></p>
-                            </div>
-                            <br><br>
-                            <h6 style = "color :white">Ville :</h6>
-                            <div class="col-12">
-                                <input class="form-control" type="text" placeholder="" id="">
-                            </div>
-                            <br><br>
-                            <div class="row">
-                                <p></p>
-                            </div>
-                            <br><br>
-                            <h6 style = "color :white">Forme sportive :</h6>
-                            <div class="col-12">
-                                <input class="form-control" type="text" placeholder="" id="">
-                            </div>
-                            <div class="row">
-                                <p></p>
-                            </div>
-                            <br><br>
-                            <h6 style = "color :white">Notation de l'application :</h6>
-                            <div class="col-12">
-                            <select id="match_status" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                    <option value="0">0 ⭐</option>
-                                    <option value="1">1 ⭐</option>
-                                    <option value="2">2 ⭐</option>
-                                    <option value="3">3 ⭐</option>
-                                    <option value="4">4 ⭐</option>
-                                    <option value="5">5 ⭐</option>
-                                </select>
-                            </div>
-                            <br>
-                            <h6 style = "color :white">Nouveau mot de passe :</h6>
-                            <div class="col-12">
-                                <input class="form-control" type="password" placeholder="" id="">
-                            </div>
-                            <h6 style = "color :white">Nouveau mot de passe :</h6>
-                            <div class="col-12">
-                                <input class="form-control" type="password" placeholder="" id="">
-                            </div>
-                            <br><br>
 
-    
-                            <button id="" class="btn btn-primary" type="submit" style="background: #FFA800; margin-left: auto; margin-right: auto;">Rechercher</button>
+    <div class="d-flex m-2 justify-content-center">
+        <section class="centrage">
+                <div class="mask d-flex align-items-center h-150 gradient-custom-3 mx-2">
+                    <div class="container" style="border-radius: 10px; background-color: #4F5B5E; top : 50px; margin-left: auto; margin-right: auto;">
+                        <div class="card-body p-4">
+                            <h3 class="text-uppercase text-center mb-5" style="color: #FFFFFF;">Votre profil :</h3>
+                            <img class = "displayed" src = "../images/pdp/profilepicture.jpg"style = "display: block; margin-left: auto; margin-right: auto">
+                            <hr>
+                            <h6 style = "color :white">Nombre de maths joués : </h6>
+                            <h6 style = "color :white">Nom : </h6>
+                            <h6 style = "color :white">Prénom : </h6>
+                            <h6 style = "color :white">Age : </h6>
+                            <h6 style = "color :white">Ville : </h6>
+                            <h6 style = "color :white">Forme sportive : </h6>
+                            <h6 style = "color :white">Note de l'application : </h6>
                         </div>
                     </div>
                 </div>
         </section>
+
+        <br>
+        <section class="centrage">
+                <div class="mask d-flex align-items-center h-150 gradient-custom-3 mx-2">
+                    <div class="container" style="border-radius: 10px; background-color: #4F5B5E; top : 50px; margin-left: auto; margin-right: auto;">
+                        <div class="card-body p-4">
+                            <h3 class="text-uppercase text-center mb-5" style="color: #FFFFFF;">Modifier vos informations :</h3>
+                            <div class="row">
+                                <h6 style = "color :white">Age :</h6>
+                                <div class="col-12">
+                                    <input class="form-control" type="text" placeholder="" id="">
+                                </div>
+                                <br><br>
+                                <div class="row">
+                                    <p></p>
+                                </div>
+                                <br><br>
+                                <h6 style = "color :white">Ville :</h6>
+                                <div class="col-12">
+                                    <input class="form-control" type="text" placeholder="" id="">
+                                </div>
+                                <br><br>
+                                <div class="row">
+                                    <p></p>
+                                </div>
+                                <br><br>
+                                <h6 style = "color :white">Forme sportive :</h6>
+                                <div class="col-12">
+                                    <input class="form-control" type="text" placeholder="" id="">
+                                </div>
+
+                                <br><br>
+                                <h6 style = "color :white">Notation de l'application :</h6>
+                                <div class="col-12">
+                                <select id="match_status" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                        <option value="0">0 ⭐</option>
+                                        <option value="1">1 ⭐</option>
+                                        <option value="2">2 ⭐</option>
+                                        <option value="3">3 ⭐</option>
+                                        <option value="4">4 ⭐</option>
+                                        <option value="5">5 ⭐</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <h6 style = "color :white">Nouveau mot de passe :</h6>
+                                <div class="col-12">
+                                    <input class="form-control" type="password" placeholder="" id="">
+                                </div>
+                                <br><br>
+                                <h6 style = "color :white">Confirmez le mot de passe</h6>
+                                <div class="col-12">
+                                    <input class="form-control" type="password" placeholder="" id="">
+                                </div>
+                                <br><br>
+
+        
+                                <button id="" class="btn btn-primary" type="submit" style="background: #FFA800; margin-left: auto; margin-right: auto;">Modifier</button>
+                            </div>
+                        </div>
+                    </div>
+            </section>
 
 
 </body>
