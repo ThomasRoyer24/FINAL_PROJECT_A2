@@ -1,6 +1,6 @@
 <?php
  include 'constants.php';
-
+ 
 
 function dbConnect(){
     $dsn = 'pgsql:dbname='.DB_NAME.';host='.DB_SERVER.';port='.DB_PORT;
@@ -32,8 +32,13 @@ function request_connection($db,$mail,$password){
         error_log('Request error: '.$exception->getMessage());
         return false;
     }
-
-    return !empty($result) ? true : false;
+    if (empty($result)) {
+       $responce['isSuccess'] = false;
+       $responce['error_message'] = "L'adresse mail ou le mot de passe est incorrect";
+    }else{
+        $responce['isSuccess'] = true;
+    }
+    return $responce;
 }
 
 
@@ -77,7 +82,7 @@ function add_user($db,$mail,$last_name,$first_name,$city,$password){
             $statement->bindParam(':password', $password);
             $statement->execute();
             $response['isSuccess'] = true;
-            $response['id'] = $id_city;
+            $response['message'] = "Votre compte à bien été crée";
             
             return $response;
         }
@@ -88,7 +93,7 @@ function add_user($db,$mail,$last_name,$first_name,$city,$password){
             return $response;
         }
     }else {
-        $response['error'] = "This email address is already in use";
+        $response['message'] = "This email address is already in use";
         $response['isSuccess'] = false;
         return $response;
   }
@@ -110,7 +115,7 @@ function get_id_city($db,$name,$bool){
 
         if (empty($result) && $bool == true) {
             set_city($db,$name);
-            $result = get_id_city($db,$name);
+            $result = get_id_city($db,$name,false);
         }else if(empty($result) && $bool == false){
             return NULL;
         }
@@ -147,24 +152,37 @@ function update_stat_user($db,$id){
         }
 }
 
-function create_match($db,$city,$sport,$max_number_player,$min_number_players,$duration,$price,$date_match){
-    try {
-        $request = "INSERT INTO match (city,sport,sport,actual_number_players,min_number_players,duration,price,date_match) VALUES(:city,:sport,:max_number_player,0,:min_number_players,:duration,:date_match)";
-        $statement = $db->prepare($request);
-        $statement->bindParam(':city', $city);
-        $statement->bindParam(':sport', $sport);
-        $statement->bindParam(':sport', $sport);
-        $statement->bindParam(':min_number_players', $min_number_players);
-        $statement->bindParam(':duration', $duration);
-        $statement->bindParam(':price', $price);
-        $statement->bindParam(':date_match', $date_match);
-        $statement->execute();
+function create_match($db,$city,$sport,$max_number_players,$min_number_players,$duration,$price,$date_match){
     
+    if ($city != NULL && $sport!= NULL && $max_number_players!= NULL && $min_number_players != NULL && $duration != NULL && $price != NULL && $date_match != NULL ) {
+       
+        try {
+            $id_city = get_id_city($db,$city,true);
+            $id_user = $_SESSION['id_user'];
+            $request = "INSERT INTO match (id_user,id_city,sport,sport,actual_number_players,min_number_players,duration,price,date_match) VALUES(:id_user,:city,:sport,:max_number_player,0,:min_number_players,:duration,:date_match)";
+            $statement = $db->prepare($request);
+            $statement->bindParam(':city', $id_city);
+            $statement->bindParam(':id_user', $id_user);
+            $statement->bindParam(':sport', $sport);
+            $statement->bindParam(':max_number_players', $max_number_players);
+            $statement->bindParam(':min_number_players', $min_number_players);
+            $statement->bindParam(':duration', $duration);
+            $statement->bindParam(':price', $price);
+            $statement->bindParam(':date_match', $date_match);
+            $statement->execute();
+            
+            $response['isSuccess'] = true;
+            $response['message'] = "Votre match à bien été crée";
+            }
+            catch (PDOException $exception){
+                error_log('Request error: '.$exception->getMessage());
+                return false;
         }
-        catch (PDOException $exception){
-            error_log('Request error: '.$exception->getMessage());
-            return false;
-        }
+    }else{
+        $response['isSuccess'] = false;
+        $response['message'] = "il manque des informations pour créé votre match";
+    }
+    return $response;
 }
 
 function get_information_user($db,$id){
@@ -206,4 +224,28 @@ function search_match($db,$city,$sport,$date,$status){
     
         return $result;
 }
+
+function get_id_user($db,$mail){
+    try {
+        $request = "SELECT id_user FROM username WHERE (:mail = mail)";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':mail', $mail);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+    
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+    
+        return $result;
+}
+
+// $request = "azert, tyui";
+// $request = explode(',', $request);
+// $requestRessource = array_shift($request);
+
+// echo $request[0];
+
 ?>

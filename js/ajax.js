@@ -58,20 +58,28 @@ function httpErrors(errorCode) {
 }
 
 function register(output) {
-    if (output == true) {
-        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-success\" role=\"alert\">Votre compte à bien été crée</span>";
+    if (output['isSuccess'] == true) {
+        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-success\" role=\"alert\">" + output['message'] + "</span>";
     } else {
-        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">L'adresse mail est déjà utilisée</span>";
+        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">" + output['message'] + "</span>";
     }
 }
 
 function display_connexion(output) {
-    if (output == true) {
+    if (output['isSuccess'] == true) {
         document.location.href = "../html/choix.php";
     } else {
-        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">L'adresse mail ou le mot de passe est incorrect</span>";
+        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">" + output['error_message'] + "</span>";
     }
 }
 function displaySearch(output) {
 
+}
+
+function create_match(output) {
+    if (output['isSuccess'] == true) {
+        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-success\" role=\"alert\">" + output['message'] + "</span>";
+    } else {
+        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">" + output['message'] + "</span>";
+    }
 }
