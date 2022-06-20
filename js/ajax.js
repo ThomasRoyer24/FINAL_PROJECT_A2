@@ -73,7 +73,7 @@ function display_connexion(output) {
     }
 }
 function displaySearch(output) {
-
+    console.log(output)
 }
 
 function create_match(output) {
@@ -92,7 +92,7 @@ function generate_input_date() {
     $div.value = dateStr;
     $div.min = dateStr;
 }
-generate_input_date();
+
 
 function viewinfos() {
     document.location.href = "../html/infos.php";

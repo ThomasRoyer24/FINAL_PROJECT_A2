@@ -207,14 +207,14 @@ function get_information_user($db,$id){
 function search_match($db,$city,$sport,$date,$status){
     try {
 
-        $id_city = get_id_city($db,$city,false);
+        $id_city = get_id_city($db,$city,false,NULL);
 
-        $request = "SELECT * FROM match WHERE (:city like id_city and :sport like sport and :date <= date_match and :status == (max_number_players == actual_number_players))";
+        $request = "SELECT * FROM match WHERE (:sport+% like sport )";
         $statement = $db->prepare($request);
-        $statement->bindParam(':city', $id_city);
+        // $statement->bindParam(':city', $id_city);
         $statement->bindParam(':sport', $sport);
-        $statement->bindParam(':date', $date);
-        $statement->bindParam(':status', $status);
+        // $statement->bindParam(':date', $date);
+        // $statement->bindParam(':status', $status);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     
