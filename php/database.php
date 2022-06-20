@@ -207,12 +207,20 @@ function get_information_user($db,$id){
 function search_match($db,$city,$sport,$date,$status){
     try {
 
-        $id_city = get_id_city($db,$city,false,NULL);
+        // $id_city = get_id_city($db,$city,false,NULL);
 
-        $request = "SELECT * FROM match WHERE (:sport+% like sport )";
+        $pourcentage= "%";
+        $sport_pourcentage = $sport.$pourcentage;
+        $city_pourcentage = $city.$pourcentage;
+
+        $request = "SELECT * FROM match m 
+                        LEFT JOIN localisation l ON m.id_localisation = l.id_localisation 
+                        WHERE (m.sport like :sport)
+                        AND (l.city like :city)
+                        AND ()";
         $statement = $db->prepare($request);
-        // $statement->bindParam(':city', $id_city);
-        $statement->bindParam(':sport', $sport);
+         $statement->bindParam(':city', $city_pourcentage);
+        $statement->bindParam(':sport', $sport_pourcentage);
         // $statement->bindParam(':date', $date);
         // $statement->bindParam(':status', $status);
         $statement->execute();
