@@ -1,6 +1,6 @@
 <?php
  include 'constants.php';
- 
+ session_start();
 
 function dbConnect(){
     $dsn = 'pgsql:dbname='.DB_NAME.';host='.DB_SERVER.';port='.DB_PORT;
@@ -99,10 +99,25 @@ function add_user($db,$mail,$last_name,$first_name,$city,$password){
   }
 }
 
+
+function update_stat_user($db,$id){
+    try {
+
+        $request = "UPDATE username SET statistics = statistics+1 WHERE (id.username = :id)";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id', $id);
+        $statement->execute();    
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+}
+
 function get_id_city($db,$city,$bool,$adresse){
         try {
             if ($adresse == NULL) {
-                $request = "SELECT id_localisation from localisation where city = :city and adresse = is null";
+                $request = "SELECT id_localisation from localisation where city = :city and adresse is null";
                 $statement = $db->prepare($request);
             }else{
                 $request = "SELECT id_localisation from localisation where city = :city and adresse = :adresse";
@@ -120,39 +135,30 @@ function get_id_city($db,$city,$bool,$adresse){
             }
     
             if (empty($result) && $bool == true) {
-                set_localisation($db,$city);
+                set_localisation($db,$city,$adresse);
                 $result = get_id_city($db,$city,false,$adresse);
             }else if(empty($result) && $bool == false){
                 return NULL;
             }
-                return $result;
+            return $result;
 }
 
 
-function update_stat_user($db,$id){
-    try {
 
-        $request = "UPDATE username SET statistics = statistics+1 WHERE (id.username = :id)";
-        $statement = $db->prepare($request);
-        $statement->bindParam(':id', $id);
-        $statement->execute();    
-        }
-        catch (PDOException $exception){
-            error_log('Request error: '.$exception->getMessage());
-            return false;
-        }
-}
-
-function create_match($db,$city,$sport,$max_number_players,$min_number_players,$duration,$price,$date_match){
+function create_match($db,$localisation,$sport,$max_number_players,$min_number_players,$duration,$price,$date_match){
     
-    if ($city != NULL && $sport!= NULL && $max_number_players!= NULL && $min_number_players != NULL && $duration != NULL && $price != NULL && $date_match != NULL ) {
+    if ($localisation != NULL && $sport!= NULL && $max_number_players!= NULL && $min_number_players != NULL && $duration != NULL && $price != NULL && $date_match != NULL ) {
        
         try {
-            $id_localisation = get_id_city($db,$city,true,NULL);
+            $localisation = explode(',', $localisation);
+            $city = $localisation[0];
+            $adresse = $localisation[1];
+
+            $id_localisation = get_id_city($db,$city,true,$adresse);
             $id_user = 1;
-            $request = "INSERT INTO match (id_user,id_localisation,sport,sport,actual_number_players,min_number_players,duration,price,date_match) VALUES(:id_user,:id_localisation,:sport,:max_number_players,0,:min_number_players,:duration,:price,:date_match)";
+            $request = "INSERT INTO match (id_user,id_localisation,sport,max_number_players,actual_number_players,min_number_players,duration,price,date_match) VALUES(:id_user,:id_localisation,:sport,:max_number_players,0,:min_number_players,:duration,:price,:date_match)";
             $statement = $db->prepare($request);
-            $statement->bindParam(':id_localisation', $id_localisation);
+            $statement->bindParam(':id_localisation', $id_localisation["id_localisation"]);
             $statement->bindParam(':id_user', $id_user);
             $statement->bindParam(':sport', $sport);
             $statement->bindParam(':max_number_players', $max_number_players);
@@ -162,6 +168,11 @@ function create_match($db,$city,$sport,$max_number_players,$min_number_players,$
             $statement->bindParam(':date_match', $date_match);
             $statement->execute();
             
+
+
+            $response['date'] = $date_match;
+
+
             $response['isSuccess'] = true;
             $response['message'] = "Votre match à bien été crée";
             }
@@ -218,7 +229,7 @@ function search_match($db,$city,$sport,$date,$status){
 
 function get_id_user($db,$mail){
     try {
-        $request = "SELECT id_user FROM username WHERE (:mail = mail)";
+        $request = "SELECT id_user FROM username WHERE (mail = :mail)";
         $statement = $db->prepare($request);
         $statement->bindParam(':mail', $mail);
         $statement->execute();
@@ -234,12 +245,10 @@ function get_id_user($db,$mail){
 }
 
 
-function set_localisation($db,$localisation){
-    $adresse = explode(',', $localisation);
-    $city = array_shift($adresse);
-    $adresse = $adresse[0];
+function set_localisation($db,$city,$adresse){
+
     try {
-        if($adresse == NULL){
+        if($adresse != NULL){
             $request = "INSERT INTO localisation (city,adresse) VALUES (:city, :adresse)";
             $statement = $db->prepare($request);
             $statement->bindParam(':adresse', $adresse);
@@ -261,28 +270,4 @@ function set_localisation($db,$localisation){
         // return get_id_city($db,$city,false,$adresse);
 
 }
-// $localisation = "gfdfgdf";
-
-// $adresse = explode(',', $localisation);
-// $city = array_shift($adresse);
-// $adresse = $adresse[0];
-
-// var_dump($city);
-// var_dump($adresse);
-
-function set_city($db,$name){
-    try {
-
-        $request = "INSERT INTO localisation (city) VALUES (:name)";
-        $statement = $db->prepare($request);
-        $statement->bindParam(':name', $name);
-        $statement->execute();  
-        
-        }
-        catch (PDOException $exception){
-            error_log('Request error: '.$exception->getMessage());
-            return false;
-        }
-}
-
 ?>

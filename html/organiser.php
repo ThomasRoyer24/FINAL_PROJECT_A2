@@ -45,7 +45,7 @@
                             </div>
                             <br><br>
                             <div class="col-12">
-                                <input class="form-control" type="text" placeholder="Adresse, Ville" id="city">
+                                <input class="form-control" type="text" placeholder="Ville,  Adresse" id="city">
                             </div>
                             <br><br>
                             <div class="row">

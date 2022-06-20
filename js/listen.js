@@ -33,13 +33,13 @@ $('#create_account_buttom').on('click', () => {
 // create match listen on buttom
 
 $('#create_match').on('click', () => {
-    let adresse_city = document.getElementById('city').value;
+    let localisation = document.getElementById('city').value;
     let min_number_players = document.getElementById('min_number_players').value;
     let max_number_players = document.getElementById('max_number_players').value;
     let date_hours = document.getElementById('date_hours').value;
     let duration = document.getElementById('duration').value;
     let price = document.getElementById('price').value;
     let sport = document.getElementById('sport').value;
-    ajaxRequest('POST', "../php/request.php/create_match", create_match, `sport=${sport}&adresse_city=${adresse_city}&min_number_players=${min_number_players}&max_number_players=${max_number_players}&date_hours=${date_hours}&duration=${duration}&price=${price}`);
+    ajaxRequest('POST', "../php/request.php/create_match", create_match, `sport=${sport}&localisation=${localisation}&min_number_players=${min_number_players}&max_number_players=${max_number_players}&date_hours=${date_hours}&duration=${duration}&price=${price}`);
 })
 

@@ -30,7 +30,7 @@
             $mail = $_GET['mail'];
             $password = $_GET['password'];
             $responce = request_connection($db,$mail,$password);
-            $_SESSION['id_user'] = get_id_user($db,$mail);
+            $_SESSION['id_user'] = get_id_user($db,$mail)["id_user"];
             echo json_encode($responce);           
     }
 
@@ -46,7 +46,7 @@
     }
 
     if ($requestMethod == 'POST' and $requestRessource == 'create_match') {
-        $adresse_city = $_POST['adresse_city'];
+        $localisation = $_POST['localisation'];
         $sport = $_POST['sport'];
         $min_number_players = $_POST['min_number_players'];
         $max_number_players = $_POST['max_number_players'];
@@ -54,7 +54,7 @@
         $duration = $_POST['duration'];
         $price = $_POST['price'];
 
-        $responce = create_match($db,$adresse_city,$sport,$max_number_players,$min_number_players,$duration,$price,$date_hours);
+        $responce = create_match($db,$localisation,$sport,$max_number_players,$min_number_players,$duration,$price,$date_hours);
         echo json_encode($responce);
     }
 ?>
