@@ -71,7 +71,7 @@
             
                             <br><br>
                             <div class="col-12">
-                            <input id="date_hours" type="datetime-local" min="" value="">
+                            <input id="date_hours" type="datetime-local">
                             </div>
                             <br><br>
                             <div class="row">
