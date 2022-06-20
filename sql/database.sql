@@ -50,7 +50,7 @@ CREATE TABLE public.match(
 	min_number_players      INT  NOT NULL ,
 	id_user                 INT  NOT NULL ,
 	id_localisation         INT  NOT NULL ,
-	id_user_username        INT  NOT NULL  ,
+	id_user_username        INT    ,
 	CONSTRAINT match_PK PRIMARY KEY (id_match)
 
 	,CONSTRAINT match_username_FK FOREIGN KEY (id_user) REFERENCES public.username(id_user)
@@ -73,6 +73,3 @@ CREATE TABLE public.participer(
 	,CONSTRAINT participer_match_FK FOREIGN KEY (id_match) REFERENCES public.match(id_match)
 	,CONSTRAINT participer_username0_FK FOREIGN KEY (id_user) REFERENCES public.username(id_user)
 )WITHOUT OIDS;
-
-
-
