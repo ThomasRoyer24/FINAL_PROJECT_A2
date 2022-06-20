@@ -83,3 +83,7 @@ function create_match(output) {
         document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">" + output['message'] + "</span>";
     }
 }
+
+function viewinfos() {
+    document.location.href = "../html/infos.php";
+}

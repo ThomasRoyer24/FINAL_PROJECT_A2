@@ -57,4 +57,12 @@
         $responce = create_match($db,$localisation,$sport,$max_number_players,$min_number_players,$duration,$price,$date_hours);
         echo json_encode($responce);
     }
+
+    if($requestMethod == 'GET' and $requestRessource == "infos_match"){
+        $id_match = $_GET['id_match'];
+        $_SESSION["id_match"] = $id_match;
+        echo json_encode(NULL);
+    }
+
+
 ?>

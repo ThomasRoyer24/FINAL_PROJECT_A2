@@ -43,3 +43,9 @@ $('#create_match').on('click', () => {
     ajaxRequest('POST', "../php/request.php/create_match", create_match, `sport=${sport}&localisation=${localisation}&min_number_players=${min_number_players}&max_number_players=${max_number_players}&date_hours=${date_hours}&duration=${duration}&price=${price}`);
 })
 
+
+$('#infobutton').on('click', () => {
+
+    let id_match = document.getElementById('id_match').value;
+    ajaxRequest('GET',`../php/request.php/infos_match/?id_match=${id_match}`,viewinfos);
+})
