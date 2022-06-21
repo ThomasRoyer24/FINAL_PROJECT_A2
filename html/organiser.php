@@ -117,5 +117,5 @@
     
 <script src="../js/ajax.js"></script>
 <script src="../js/listen.js"></script>
-<script>generate_input_date();</script>
+<script>generate_input_date(true);</script>
 </html>

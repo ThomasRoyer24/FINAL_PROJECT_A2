@@ -36,8 +36,8 @@
 
     if ($requestMethod == 'GET' and $requestRessource == 'search') {
         //gestion timestant
-        $date = time();
-        $date += $_GET['time']*86400;
+        
+        $date = $_GET['time'];
         $city = $_GET['city'];
         $sport = $_GET['sport'];
         $status = $_GET['match_status'];

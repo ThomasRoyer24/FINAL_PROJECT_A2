@@ -212,21 +212,30 @@ function search_match($db,$city,$sport,$date,$status){
         $pourcentage= "%";
         $sport_pourcentage = $sport.$pourcentage;
         $city_pourcentage = $city.$pourcentage;
+ 
+        
+        $time_now = time();
+        $date_now = date('Y-m-d H:i:s', $time_now);
 
         $request = "SELECT * FROM match m 
                         LEFT JOIN localisation l ON m.id_localisation = l.id_localisation 
                         WHERE (m.sport like :sport)
                         AND (l.city like :city)
-                        AND ()";
+                        AND (:status = (m.max_number_players != m.actual_number_players))
+                        AND (:date > m.date_match)
+                        AND  (:date_now < m.date_match)";
+                        
         $statement = $db->prepare($request);
-         $statement->bindParam(':city', $city_pourcentage);
+        $statement->bindParam(':city', $city_pourcentage);
         $statement->bindParam(':sport', $sport_pourcentage);
-        // $statement->bindParam(':date', $date);
-        // $statement->bindParam(':status', $status);
+        $statement->bindParam(':date', $date);
+        $statement->bindParam(':status', $status);
+        $statement->bindParam(':status', $status);
+        $statement->bindParam(':date_now',$date_now);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     
-        }
+        }   
         catch (PDOException $exception){
             error_log('Request error: '.$exception->getMessage());
             return false;
@@ -234,6 +243,8 @@ function search_match($db,$city,$sport,$date,$status){
     
         return $result;
 }
+
+
 
 function get_id_user($db,$mail){
     try {

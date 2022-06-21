@@ -50,3 +50,9 @@ $('#time').on('change', () => {
         ajaxRequest('GET', `../php/request.php/search/?sport=${sport_query}&city=${city_query}&time=${time_query}&match_status=${match_status_query}`, displaySearch);
     }
 })
+
+$('#infobutton').on('click', () => {
+
+    let id_match = document.getElementById('id_match').value;
+    ajaxRequest('GET', `../php/request.php/infos_match/?id_match=${id_match}`, viewinfos);
+})

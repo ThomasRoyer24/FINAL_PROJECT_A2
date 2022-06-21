@@ -57,12 +57,11 @@
                             <br><br><br>
                             <div class="col-12">
                                 <select id = "time" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                    <option value="7">+ 7 jours</option>
-                                    <option value="15">+ 15 jours</option>
-                                    <option value="30">+ 30 jours</option>
+                                    <option id="plus_7">+ 7 jours</option>
+                                    <option id="plus_15">+ 15 jours</option>
+                                    <option id="plus_30">+ 30 jours</option>
                                 </select>
                             </div>
-       
                             <div class="col-12">
                                 <select id="match_status" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                                     <option value="true">Disponible</option>
@@ -152,5 +151,5 @@
     
 <script src="../js/ajax.js"></script>
 <script src="../js/listen_recherche.js"></script>
-
+<script>generate_input_date(false)</script>
 </html>

@@ -84,13 +84,48 @@ function create_match(output) {
     }
 }
 
-function generate_input_date() {
 
-    $div = document.getElementById('date_hours');
+function generate_input_date(bool) {
     var date = new Date();
-    var dateStr = date.getFullYear() + "-" + ("00" + (date.getMonth() + 1)).slice(-2) + "-" + ("00" + (date.getDate() + 1)).slice(-2) + "T" + ("00" + date.getHours()).slice(-2) + ":" + ("00" + date.getMinutes()).slice(-2) + ":" + ("00");
-    $div.value = dateStr;
-    $div.min = dateStr;
+    if (bool == true) {
+
+        if (date.getDate() + 2 > 30) {
+            var plus_time = -date.getDate() + 1;
+            var plus_month = 1;
+        } else {
+            var plus_time = 2;
+            var plus_month = 0;
+        }
+
+
+        $output_date = document.getElementById('date_hours');
+
+        var dateStr = date.getFullYear() + "-" + ("00" + (date.getMonth() + 1 + plus_month)).slice(-2) + "-" + ("00" + (date.getDate() + plus_time)).slice(-2) + "T" + ("00" + date.getHours()).slice(-2) + ":" + ("00" + date.getMinutes()).slice(-2) + ":" + ("00");
+        $output_date.value = dateStr;
+        $output_date.min = dateStr;
+    } else {
+        let text = 'plus_';
+
+
+
+        let tab = [7, 15, 30];
+
+        tab.forEach(element => {
+            let new_text = text + element.toString();
+            if (date.getDate() + element > 30) {
+                var plus_time = element - 30;
+                var plus_month = 1;
+            } else {
+                var plus_time = element;
+                var plus_month = 0;
+            }
+            var dateStr = date.getFullYear() + "-" + ("00" + (date.getMonth() + 1 + plus_month)).slice(-2) + "-" + ("00" + (date.getDate() + plus_time)).slice(-2) + "T" + ("00" + date.getHours()).slice(-2) + ":" + ("00" + date.getMinutes()).slice(-2) + ":" + ("00");
+            document.getElementById(new_text).value = dateStr;
+        });
+
+
+
+    }
 }
 
 
