@@ -5,8 +5,8 @@ $('#city').on('keyup', () => {
     city_query = document.getElementById('city').value;
     time_query = document.getElementById('time').value;
     match_status_query = document.getElementById('match_status').value;
-    if (sport_query == '' && city_query == '') {
-        // document.getElementById('search_result_status').remove()
+    if (sport_query == null && city_query == null) {
+
     } else {
         ajaxRequest('GET', `../php/request.php/search/?sport=${sport_query}&city=${city_query}&time=${time_query}&match_status=${match_status_query}`, displaySearch);
     }
@@ -51,8 +51,3 @@ $('#time').on('change', () => {
     }
 })
 
-$('#infobutton').on('click', () => {
-
-    let id_match = document.getElementById('id_match').value;
-    ajaxRequest('GET', `../php/request.php/infos_match/?id_match=${id_match}`, viewinfos);
-})

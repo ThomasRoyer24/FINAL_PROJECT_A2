@@ -72,9 +72,7 @@ function display_connexion(output) {
         document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">" + output['error_message'] + "</span>";
     }
 }
-function displaySearch(output) {
-    console.log(output)
-}
+
 
 function create_match(output) {
     if (output['isSuccess'] == true) {
@@ -131,4 +129,31 @@ function generate_input_date(bool) {
 
 function viewinfos() {
     document.location.href = "../html/infos.php";
+}
+
+function displaySearch(output) {
+
+    $table = document.getElementById('tableau_match');
+    $table.innerHTML = "<tr><th>Sport</th><th>Ville</th><th>Joueurs Max</th><th>Inscrits</th><th>Date</th><th></th></tr>";
+    output.forEach(element => {
+
+        let redirection_btn = document.createElement('button');
+        redirection_btn.innerHTML = "+";
+        redirection_btn.style = "color:white;background: #FFA800; border-radius: 10px";
+
+        redirection_btn.className = "btn mx-1";
+        redirection_btn.setAttribute('onclick', 'redirection(' + element['id_match'] + ')');
+
+
+
+        $table.innerHTML += "<tr><td>" + element['sport'] + "</td><td>" + element['city'] + "</td><td>" + element['max_number_players'] + "</td><td>" + element['actual_number_players'] + "</td><td>" + element['date_match'] + "</td><td>" + redirection_btn.outerHTML + "</td></tr>";
+
+
+    });
+
+}
+
+function redirection(id) {
+
+    ajaxRequest('GET', `../php/request.php/infos_match/?id_match=${id}`, viewinfos);
 }

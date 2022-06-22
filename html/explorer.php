@@ -74,7 +74,6 @@
                             </div>
                             <br><br>
     
-                            <button id="search" class="btn" type="submit" style=" color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Rechercher</button>
                         </div>
                     </div>
                 </div>
@@ -84,54 +83,8 @@
         <div class="container mx-2" style="border-radius: 10px; background-color: #4F5B5E; top : 50px; margin-left: auto; margin-right: auto;">
             <div class="card-body p-4">
                 <h3 class="text-uppercase text-center mb-5" style="color: #FFFFFF;">Informations Matchs</h3>
-                <table class="table" style="color: #FFFFFF;">
-                    <tr>
-                        <th>
-                            Sport
-                        </th>
-                        <th>
-                            Ville
-                        </th>
-                        <th>
-                            Joueurs Max
-                        </th>
-                        <th>
-                            Inscrits
-                        </th>
-                        <th>
-                            Date
-                        </th>
-                        <th>
-                            Heure
-                        </th>
-                        <th>
-                                
-                        </th>
-                    </tr>
-                    <tr>
-                        <input id="id_match"  type="hidden" value = "1">
-                        <th>
-                            Football
-                        </th>
-                        <th>
-                            Nantes
-                        </th>
-                        <th>
-                            8
-                        </th>
-                        <th>
-                            4
-                        </th>
-                        <th>
-                            21/06/2022
-                        </th>
-                        <th>
-                            14.00
-                        </th>
-                        <th>
-                            <button id = "infobutton" class="btn mx-1" type="submit" style = "color:white;background: #FFA800; border-radius: 10px;">+</button>  
-                        </th>
-                    </tr>   
+                <table class="table" style="color: #FFFFFF;" id="tableau_match">
+                                          
                 </table>
             </div>
         </div>
