@@ -28,7 +28,6 @@ $('#create_account_buttom').on('click', () => {
     }
 })
 
-// les 4 prochaines fonction écoute tt les changements lors de la recherche dans explorer
 
 // create match listen on buttom
 

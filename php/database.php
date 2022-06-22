@@ -289,4 +289,21 @@ function set_localisation($db,$city,$adresse){
         // return get_id_city($db,$city,false,$adresse);
 
 }
+
+function get_informations_match($db,$id){
+    try {
+        $request = "SELECT match.sport, match.date_match, match.price, localisation.city, localisation.adresse, username.first_name, username.last_name FROM match, localisation, username WHERE ( match.id_localisation = localisation.id_localisation and match.id_user = username.id_user and id_match = :id)";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+
+        return $result;
+}
 ?>

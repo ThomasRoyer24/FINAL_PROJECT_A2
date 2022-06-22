@@ -29,9 +29,9 @@
     if($requestMethod == 'GET' and $requestRessource == 'login'){
             $mail = $_GET['mail'];
             $password = $_GET['password'];
-            $responce = request_connection($db,$mail,$password);
+            $response = request_connection($db,$mail,$password);
             $_SESSION['id_user'] = get_id_user($db,$mail)["id_user"];
-            echo json_encode($responce);           
+            echo json_encode($response);           
     }
 
     if ($requestMethod == 'GET' and $requestRessource == 'search') {
@@ -41,8 +41,8 @@
         $city = $_GET['city'];
         $sport = $_GET['sport'];
         $status = $_GET['match_status'];
-        $responce = search_match($db,$city,$sport,$date,$status);
-        echo json_encode($responce);
+        $response = search_match($db,$city,$sport,$date,$status);
+        echo json_encode($response);
     }
 
     if ($requestMethod == 'POST' and $requestRessource == 'create_match') {
@@ -54,8 +54,8 @@
         $duration = $_POST['duration'];
         $price = $_POST['price'];
 
-        $responce = create_match($db,$localisation,$sport,$max_number_players,$min_number_players,$duration,$price,$date_hours);
-        echo json_encode($responce);
+        $response = create_match($db,$localisation,$sport,$max_number_players,$min_number_players,$duration,$price,$date_hours);
+        echo json_encode($response);
     }
 
     if($requestMethod == 'GET' and $requestRessource == "infos_match"){
@@ -64,5 +64,10 @@
         echo json_encode(NULL);
     }
 
+    if($requestMethod == 'GET' and $requestRessource == "get_info-match"){
+        $id_match = $_SESSION["id_match"];
+        $response = get_informations_match($db,$id_match);
+        echo json_encode($response);
+    }
 
 ?>

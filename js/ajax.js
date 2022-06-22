@@ -157,3 +157,12 @@ function redirection(id) {
 
     ajaxRequest('GET', `../php/request.php/infos_match/?id_match=${id}`, viewinfos);
 }
+
+function display_info_match(output) {
+    document.getElementById('sport').innerHTML += output['sport'];
+    document.getElementById('ville').innerHTML += output['city'];
+    document.getElementById('date').innerHTML += output['date_match'];
+    document.getElementById('adresse').innerHTML += output['adresse'];
+    document.getElementById('prix').innerHTML += " " + output['price'] + " €";
+    document.getElementById('admin').innerHTML += output['first_name'] + " " + output['last_name'];
+}
