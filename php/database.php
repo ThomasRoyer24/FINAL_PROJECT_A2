@@ -306,4 +306,80 @@ function get_informations_match($db,$id){
 
         return $result;
 }
+
+
+function inscription_match($db,$id){
+    $id_user = get_id_user_from_match($db,$id)['id_user'];
+    try {
+        $request = "SELECT max_number_players, actual_number_players FROM match WHERE (id_match = :id_match)";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id_match', $id);
+        $statement->execute();
+        $resulte = $statement->fetch(PDO::FETCH_ASSOC);
+    
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+        try {
+            $request = "SELECT * FROM participer WHERE (id_match = :id_match and id_user = :id_user)";
+            $statement = $db->prepare($request);
+            $statement->bindParam(':id_match', $id);
+            $statement->bindParam(':id_user', $id_user);
+            $statement->execute();
+            $resp = $statement->fetch(PDO::FETCH_ASSOC);
+        
+            }
+            catch (PDOException $exception){
+                error_log('Request error: '.$exception->getMessage());
+                return false;
+            }
+            if ($resp != NULL) {
+                $result['isSuccess'] = false;
+                $result['message'] = "Vous ete déjà inscrit à ce match";
+            }
+
+        if (($resulte['max_number_players'] != $resulte['actual_number_players'])&& $resp == NULL) {
+            try {
+                    
+                    $request = "INSERT INTO participer VALUES (:id_match,:id_user,false,false,0)";
+                    $statement = $db->prepare($request);
+                    $statement->bindParam(':id_match', $id);
+                    $statement->bindParam(':id_user', $id_user);
+                    $statement->execute();
+
+                    }
+                    catch (PDOException $exception){
+                        error_log('Request error: '.$exception->getMessage());
+                        return false;
+                    }
+                    $result['isSuccess'] = true;
+                    $result['message'] = "Votre demande d'inscription a bien été prise en compte";
+                    
+                }else{
+                    $result['isSuccess'] = false;
+                    $result['message'] = "il n'y a plus de place disponible pour ce match";
+                }
+
+    
+        return $result;
+}
+
+function get_id_user_from_match($db,$id_match){
+    try {
+        $request = "SELECT id_user FROM match WHERE (id_match = :id_match)";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id_match', $id_match);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+    
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+    
+        return $result;
+}
 ?>

@@ -70,4 +70,10 @@
         echo json_encode($response);
     }
 
+    if($requestMethod == 'POST' and $requestRessource == "inscription_match"){
+        $id_match = $_SESSION["id_match"];
+        $response = inscription_match($db,$id_match);
+        echo json_encode($response);
+    }
+
 ?>

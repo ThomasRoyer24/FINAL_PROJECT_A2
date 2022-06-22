@@ -166,3 +166,11 @@ function display_info_match(output) {
     document.getElementById('prix').innerHTML += " " + output['price'] + " €";
     document.getElementById('admin').innerHTML += output['first_name'] + " " + output['last_name'];
 }
+
+function inscription_match(output) {
+    if (output['isSuccess'] == true) {
+        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-success\" role=\"alert\">" + output['message'] + "</span>";
+    } else {
+        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">" + output['message'] + "</span>";
+    }
+}

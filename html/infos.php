@@ -50,9 +50,11 @@
                 
                 </div>
                 <br>
-                <button id="A-REMPLIR" class="btn justify-content-center" type="submit" style="color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Je m'inscris</button>
-            </div>   
+                <button id="inscription_match" class="btn justify-content-center" type="submit" style="color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Je m'inscris</button>
+        <br><div id="error_message"></div>    </div>  
+            </div> 
         </div>
+        
     </div>
 
 </body>
