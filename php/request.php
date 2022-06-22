@@ -76,4 +76,22 @@
         echo json_encode($response);
     }
 
+    if($requestMethod == 'GET' and $requestRessource == "notification_validation"){
+        $id_user = $_SESSION["id_user"];
+        $response = get_notification($db,$id_user);
+        echo json_encode($response);
+    }
+    if($requestMethod == 'PUT' and $requestRessource == "add"){
+        parse_str(file_get_contents('php://input'), $_PUT);
+        $id_user = $_PUT['id_user'];
+        $id_match = $_PUT['id_match'];
+        $response = add_user_match($db,$id_user,$id_match);
+    }
+    if($requestMethod == 'PUT' and $requestRessource == "dont_add"){
+        parse_str(file_get_contents('php://input'), $_PUT);
+        $id_user = $_PUT['id_user'];
+        $id_match = $_PUT['id_match'];
+        $response = dont_add_user_match($db,$id_user,$id_match);
+    }
+
 ?>

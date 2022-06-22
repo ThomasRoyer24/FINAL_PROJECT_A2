@@ -67,5 +67,5 @@
 </footer>
 <script src="../js/ajax.js"></script>
 <script src="../js/listen.js"></script>
-<script>ajaxRequest('GET', `../php/request.php/get_info-match`,display_info_match);</script>
+<script>ajaxRequest('GET', "../php/request.php/get_info-match",display_info_match);</script>
 </html>

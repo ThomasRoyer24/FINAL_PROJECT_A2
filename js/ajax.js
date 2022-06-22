@@ -174,3 +174,38 @@ function inscription_match(output) {
         document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">" + output['message'] + "</span>";
     }
 }
+
+function display_notification(output) {
+    $table = document.getElementById('tableau');
+    $table.innerHTML = "<tr><th>Prénom</th><th>Nom</th><th>Horaire</th><th>Lieu</th><th></th><th></th></tr>";
+    output.forEach(element => {
+
+        let add_btn = document.createElement('button');
+        add_btn.innerHTML = "+";
+        add_btn.style = "color:white;background: #FFA800; border-radius: 10px";
+
+        add_btn.className = "btn mx-1";
+        add_btn.setAttribute('onclick', 'add(' + element['id_user'] + "," + element['id_match'] + ')');
+
+        let delete_btn = document.createElement('button');
+        delete_btn.innerHTML = " - ";
+        delete_btn.style = "color:white;background: #FFA800; border-radius: 10px";
+
+        delete_btn.className = "btn mx-1";
+        delete_btn.setAttribute('onclick', 'dont_add(' + element['id_user'] + "," + element['id_match'] + ')');
+
+        $table.innerHTML += "<tr><td>" + element['first_name'] + "</td><td>" + element['last_name'] + "</td><td>" + element['date_match'] + "</td><td>" + element['city'] + ", " + element['adresse'] + "</td><td>" + add_btn.outerHTML + "</td><td>" + delete_btn.outerHTML + "</td></tr>";
+
+
+    });
+}
+
+function add(id_user, id_match) {
+    ajaxRequest('PUT', '../php/request.php/add', undefined, `id_user=${id_user}&id_match=${id_match}`);
+    ajaxRequest('GET', "../php/request.php/notification_validation", display_notification);
+}
+
+function dont_add(id_user, id_match) {
+    ajaxRequest('PUT', '../php/request.php/dont_add', undefined, `id_user=${id_user}&id_match=${id_match}`);
+    ajaxRequest('GET', "../php/request.php/notification_validation", display_notification);
+}

@@ -309,7 +309,7 @@ function get_informations_match($db,$id){
 
 
 function inscription_match($db,$id){
-    $id_user = get_id_user_from_match($db,$id)['id_user'];
+    $id_user = $_SESSION['id_user'];
     try {
         $request = "SELECT max_number_players, actual_number_players FROM match WHERE (id_match = :id_match)";
         $statement = $db->prepare($request);
@@ -338,6 +338,7 @@ function inscription_match($db,$id){
             if ($resp != NULL) {
                 $result['isSuccess'] = false;
                 $result['message'] = "Vous ete déjà inscrit à ce match";
+                return $result;
             }
 
         if (($resulte['max_number_players'] != $resulte['actual_number_players'])&& $resp == NULL) {
@@ -382,4 +383,51 @@ function get_id_user_from_match($db,$id_match){
     
         return $result;
 }
+
+
+function get_notification($db,$id_user){
+    try {
+        $request = "SELECT m.id_match, u.id_user, u.first_name , u.last_name, m.date_match,l.city,l.adresse FROM participer p LEFT JOIN match m ON m.id_match = p.id_match LEFT JOIN username u ON p.id_user = u.id_user LEFT JOIN localisation l ON l.id_localisation = m.id_localisation  WHERE (m.id_user = :id_user and p.ischeck = false)";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id_user', $id_user);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+    
+        return $result;
+}
+
+function add_user_match($db,$id_user,$id_match){
+    try {
+        $request = "UPDATE participer SET ischeck = true,confirmation = true WHERE (id_user = :id_user AND id_match = :id_match) ";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id_user', $id_user);
+        $statement->bindParam(':id_match', $id_match);
+        $statement->execute();
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+}
+
+function dont_add_user_match($db,$id_user,$id_match){
+    try {
+    $request = "UPDATE participer SET ischeck = true,confirmation = false WHERE (id_user = :id_user AND id_match = :id_match) ";
+    $statement = $db->prepare($request);
+    $statement->bindParam(':id_user', $id_user);
+    $statement->bindParam(':id_match', $id_match);
+    $statement->execute();
+    }
+    catch (PDOException $exception){
+        error_log('Request error: '.$exception->getMessage());
+        return false;
+    }
+}
+
 ?>
