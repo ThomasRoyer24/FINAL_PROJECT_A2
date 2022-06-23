@@ -47,3 +47,30 @@ $('#inscription_match').on('click', () => {
 })
 
 
+//Modifications
+$('#new_infos_button').on('click', () => {
+    let age = document.getElementById('new_age').value;
+    let ville = document.getElementById('new_city').value;
+    let formesportive = document.getElementById('new_fit_indicator').value;
+    let notation = document.getElementById('new_notation').value;
+    let newmdp = document.getElementById('new_mdp').value;
+    let confirm_newmdp = document.getElementById('new_mdp_confirm').value;
+
+
+    if (confirm_newmdp == "" || newmdp == "") { } else {
+        ajaxRequest('PUT', "../php/request.php/modif_mdp", modif_mdp, `newmdp=${newmdp}&con firm_newmdp=${confirm_newmdp}`);
+    }
+    if (age == "") { } else {
+        ajaxRequest('PUT', "../php/request.php/modif_age", undefined, `age=${age}`);
+    }
+    if (ville == "") { } else {
+        ajaxRequest('PUT', "../php/request.php/modif_city", undefined, `ville=${ville}`);
+    }
+    if (formesportive == "") { } else {
+        ajaxRequest('PUT', "../php/request.php/modif_sportsform", undefined, `formesportive=${formesportive}`);
+    }
+    if (notation == "") { } else {
+        ajaxRequest('PUT', "../php/request.php/modif_rating", undefined, `notation=${notation}`);
+    }
+    ajaxRequest('GET', "../php/request.php/get_info-profil", display_info_profil);
+})

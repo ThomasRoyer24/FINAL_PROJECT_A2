@@ -100,20 +100,6 @@ function add_user($db,$mail,$last_name,$first_name,$city,$password){
 }
 
 
-function update_stat_user($db,$id){
-    try {
-
-        $request = "UPDATE username SET statistics = statistics+1 WHERE (id.username = :id)";
-        $statement = $db->prepare($request);
-        $statement->bindParam(':id', $id);
-        $statement->execute();    
-        }
-        catch (PDOException $exception){
-            error_log('Request error: '.$exception->getMessage());
-            return false;
-        }
-}
-
 function get_id_city($db,$city,$bool,$adresse){
         try {
             if ($adresse == NULL) {
@@ -428,6 +414,168 @@ function dont_add_user_match($db,$id_user,$id_match){
         error_log('Request error: '.$exception->getMessage());
         return false;
     }
+}
+
+function update_statistique($db,$id_user){
+    try {
+        $request = "UPDATE username SET statistics = statistics + 1  WHERE (id_user = :id_user) ";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id_user', $id_user);
+        $statement->execute();
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+}
+
+function get_future_match($db,$id_user){
+    $time_now = time();
+    $date_now = date('Y-m-d H:i:s', $time_now);
+
+    try {
+        $request = "SELECT *, m.id_user as id_admin ,p.id_user as id_actual_user FROM match m LEFT JOIN participer p  ON m.id_match = p.id_match LEFT JOIN localisation l ON l.id_localisation = m.id_localisation  WHERE (p.id_user = :id_user AND p.confirmation = true AND m.date_match >  :date_now)";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id_user', $id_user);
+        $statement->bindParam(':date_now', $date_now);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+        return $result;
+}
+
+function get_past_match($db,$id_user){
+    $time_now = time();
+    $date_now = date('Y-m-d H:i:s', $time_now);
+
+    try {
+        $request = "SELECT *, m.id_user as id_admin ,p.id_user as id_actual_user FROM match m LEFT JOIN participer p ON m.id_match = p.id_match LEFT JOIN localisation l ON l.id_localisation = m.id_localisation  WHERE (p.id_user = :id_user AND p.confirmation = true AND m.date_match <  :date_now)";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id_user', $id_user);
+        $statement->bindParam(':date_now', $date_now);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+        return $result;
+}
+
+function get_informations_profil($db,$id){
+    try {
+        $request = "SELECT username.statistics, username.last_name, username.first_name, username.birth_date, localisation.city, username.sports_form, username.rating FROM username, localisation WHERE (username.id_user=:id and username.id_localisation=localisation.id_localisation)";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+
+        return $result;
+}
+
+
+
+//Fonctions de modifications, appelés indépendament selon les infos qui sont complétés
+//Age
+function modif_age($db,$id,$birthdate){
+    try {
+        $request = "UPDATE username SET birth_date = :birth_date WHERE id_user = :id";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id', $id);
+        $statement->bindParam(':birth_date', $birthdate);
+        $statement->execute();
+    }
+    catch (PDOException $exception){
+        error_log('Request error: '.$exception->getMessage());
+        return false;
+    }
+
+}
+
+//Ville
+function modif_city($db,$id,$ville){
+    try {
+        $request = "UPDATE localisation AS loc SET city =:city FROM username AS use WHERE loc.id_localisation = use.id_localisation and use.id_user=:id";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id', $id);
+        $statement->bindParam(':city', $ville);
+        $statement->execute();
+    }
+    catch (PDOException $exception){
+        error_log('Request error: '.$exception->getMessage());
+        return false;
+    }
+
+}
+
+//Forme sportive
+function modif_sportsform($db,$id,$sportsform){ 
+    try {
+    $request = "UPDATE username SET sports_form=:sports_form WHERE id_user = :id";
+    $statement = $db->prepare($request);
+    $statement->bindParam(':id', $id);
+    $statement->bindParam(':sports_form', $sportsform);
+    $statement->execute();
+}
+    catch (PDOException $exception){
+        error_log('Request error: '.$exception->getMessage());
+        return false;
+    }
+
+}
+
+//Note de l'app
+function modif_rating($db,$id,$note){
+    try {
+    $request = "UPDATE username SET rating = :rating WHERE id_user = :id";
+    $statement = $db->prepare($request);
+    $statement->bindParam(':id', $id);
+    $statement->bindParam(':rating', $note);
+    $statement->execute();
+
+}
+    catch (PDOException $exception){
+        error_log('Request error: '.$exception->getMessage());
+        return false;
+    }
+
+}
+
+//MDP
+function modif_mdp($db,$id,$newmdp,$confirm_newmdp){
+    if ($confirm_newmdp != $newmdp) {
+        $result['isSuccess'] = false;
+        $result['message'] = "Mots de passe différents";
+        return $result;
+    }
+    try {
+
+    $request = "UPDATE username SET password= :password WHERE id_user = :id";
+    $statement = $db->prepare($request);
+    $statement->bindParam(':id', $id);
+    $statement->bindParam(':password', $newmdp);
+    $statement->execute();
+
+    $result['isSuccess'] = true;
+    $result['message'] = "Votre mot de passe a bien été modifié";
+}
+    catch (PDOException $exception){
+        error_log('Request error: '.$exception->getMessage());
+        return false;
+    }
+
+    return $result;
 }
 
 ?>

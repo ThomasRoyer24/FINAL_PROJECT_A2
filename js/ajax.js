@@ -209,3 +209,52 @@ function dont_add(id_user, id_match) {
     ajaxRequest('PUT', '../php/request.php/dont_add', undefined, `id_user=${id_user}&id_match=${id_match}`);
     ajaxRequest('GET', "../php/request.php/notification_validation", display_notification);
 }
+
+function display_futur_match(output) {
+    console.log(output);
+    $table = document.getElementById('table_futur');
+    $table.innerHTML = "<tr><th>Sport</th><th>Lieu</th><th>Date</th><th>Organisateur ?</th><th>Joueur ?</th></tr>";
+    output.forEach(element => {
+        if (element['id_admin'] == element['id_actual_user']) {
+            var organisateur = "Oui";
+        } else {
+            var organisateur = "Non";
+        }
+        if (element['id_user'] == element['id_actual_user']) {
+            var joueur = "Oui";
+        }
+        else {
+            var joueur = "Non";
+        }
+        $table.innerHTML += "<tr><td>" + element['sport'] + "</td><td>" + element['city'] + ", " + element['adresse'] + "</td><td>" + element['date_match'] + "</td><td>" + organisateur + "</td><td>" + joueur + "</td></tr>";
+
+
+    });
+}
+
+
+function display_past_match(output) {
+    $table = document.getElementById('table_past');
+    $table.innerHTML = "<tr><th>Sport</th><th>Score</th><th>Meilleur joueur</th><th>Lieu</th><th>Date</th><th>Organisateur ?</th><th>Joueur ?</th></tr>";
+    output.forEach(element => {
+        $table.innerHTML += "";
+    });
+}
+
+function display_info_profil(output) {
+    document.getElementById('match_profil').innerHTML = output['statistics'];
+    document.getElementById('nom_profil').innerHTML = output['last_name'];
+    document.getElementById('prenom_profil').innerHTML = output['first_name'];
+    document.getElementById('age_profil').innerHTML = output['birth_date'];
+    document.getElementById('ville_profil').innerHTML = output['city'];
+    document.getElementById('forme_profil').innerHTML = output['sports_form'];
+    document.getElementById('note_profil').innerHTML = output['rating'];
+}
+
+function modif_mdp(output) {
+    if (output['isSuccess'] == true) {
+        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-success\" role=\"alert\">" + output['message'] + "</span>";
+    } else {
+        document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">" + output['message'] + "</span>";
+    }
+}

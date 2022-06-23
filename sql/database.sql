@@ -24,7 +24,7 @@ CREATE TABLE public.username(
 	password          VARCHAR (50) NOT NULL ,
 	first_name        VARCHAR (50) NOT NULL ,
 	last_name         VARCHAR (50) NOT NULL ,
-	birth_date        INTEGER   ,
+	birth_date        TIMESTAMP   ,
 	statistics        INT  NOT NULL ,
 	rating            INT   ,
 	sports_form       VARCHAR (50)  ,
@@ -73,3 +73,6 @@ CREATE TABLE public.participer(
 	,CONSTRAINT participer_match_FK FOREIGN KEY (id_match) REFERENCES public.match(id_match)
 	,CONSTRAINT participer_username0_FK FOREIGN KEY (id_user) REFERENCES public.username(id_user)
 )WITHOUT OIDS;
+
+
+

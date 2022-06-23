@@ -93,5 +93,73 @@
         $id_match = $_PUT['id_match'];
         $response = dont_add_user_match($db,$id_user,$id_match);
     }
+    if($requestMethod == 'PUT' and $requestRessource == "update_stat"){
+        parse_str(file_get_contents('php://input'), $_PUT);
+        $id_user = $_PUT['id_user'];
+        $response = update_statistique($db,$id_user);
+    }
+    if($requestMethod == 'GET' and $requestRessource == "futur_match"){
+
+        $id_user = $_SESSION['id_user'];
+        $response = get_future_match($db,$id_user);
+       echo json_encode($response);
+    }
+    if($requestMethod == 'GET' and $requestRessource == "past_match"){
+
+        $id_user = $_SESSION['id_user'];
+        $response = get_past_match($db,$id_user);
+       echo json_encode($response);
+    }
+
+    //Modifications compte
+
+    if($requestMethod == 'PUT' and $requestRessource == "modif_age"){
+        parse_str(file_get_contents('php://input'), $_PUT);
+        $id = $_SESSION['id_user'];
+        $age = $_PUT['age'];
+        $response = modif_age($db,$id,$age);
+        echo json_encode($response);
+    }
+
+
+    if($requestMethod == 'PUT' and $requestRessource == "modif_city"){
+        parse_str(file_get_contents('php://input'), $_PUT);
+        $id = $_SESSION['id_user'];
+        $city = $_PUT['ville'];
+        $response = modif_city($db,$id,$city);
+        echo json_encode($response);
+    }
+
+    if($requestMethod == 'PUT' and $requestRessource == "modif_sportsform"){
+        parse_str(file_get_contents('php://input'), $_PUT);
+        $id = $_SESSION['id_user'];
+        $sportsform = $_PUT['formesportive'];
+        $response = modif_sportsform($db,$id,$sportsform);
+        echo json_encode($response);
+    }
+
+
+    if($requestMethod == 'PUT' and $requestRessource == "modif_rating"){
+        parse_str(file_get_contents('php://input'), $_PUT);
+        $id = $_SESSION['id_user'];
+        $rating = $_PUT['notation'];
+        $response = modif_rating($db,$id,$rating);
+        echo json_encode($response);
+    }
+
+    if($requestMethod == 'PUT' and $requestRessource == "modif_mdp"){
+        parse_str(file_get_contents('php://input'), $_PUT);
+        $id = $_SESSION['id_user'];
+        $mdp = $_PUT['newmdp'];
+        $confirm = $_PUT['confirm_newmdp'];
+        $response = modif_mdp($db,$id,$mdp,$confirm);
+        echo json_encode($response);
+    }
+    if($requestMethod == 'GET' and $requestRessource == "get_info-profil"){
+        $id_user = $_SESSION["id_user"];
+        $response = get_informations_profil($db,$id_user);
+        echo json_encode($response);
+    }
+    // fin modification compte
 
 ?>
