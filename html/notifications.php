@@ -23,7 +23,7 @@
             <img src="../images/coupe.png" width="4%" height="100%">
             <div style = "margin-left: auto;">
                 <a href = "choix.php" class="btn " type="submit" style = "color:white;background: #4F5B5E; ">Menu</a>
-                <a href = "notifications.php" class="btn " type="submit" style = "color:white;background: #4F5B5E; ">Notifications</a>
+                <a href = "profil.php" class="btn " type="submit" style = "color:white;background: #4F5B5E; ">Profil</a>
                 <a href = "connexion.php" class="btn " type="submit" style = "color:white;background: #4F5B5E; ">Déconnection</a>
             </div>
         </div>
