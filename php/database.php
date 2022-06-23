@@ -578,4 +578,22 @@ function modif_mdp($db,$id,$newmdp,$confirm_newmdp){
     return $result;
 }
 
+
+function get_inscriptions($db,$id){
+    try {
+        $request = "SELECT match.sport, localisation.city, match.date_match,  participer.confirmation, participer.ischeck FROM match, localisation, participer WHERE (match.id_user=:id and match.id_localisation=localisation.id_localisation and participer.id_match = match.id_match)";
+        $statement = $db->prepare($request);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        }
+        catch (PDOException $exception){
+            error_log('Request error: '.$exception->getMessage());
+            return false;
+        }
+
+        return $result;
+}
+
 ?>

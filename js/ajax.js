@@ -203,11 +203,13 @@ function display_notification(output) {
 function add(id_user, id_match) {
     ajaxRequest('PUT', '../php/request.php/add', undefined, `id_user=${id_user}&id_match=${id_match}`);
     ajaxRequest('GET', "../php/request.php/notification_validation", display_notification);
+    ajaxRequest('GET',"../php/request.php/notification_inscription",display_notification2)
 }
 
 function dont_add(id_user, id_match) {
     ajaxRequest('PUT', '../php/request.php/dont_add', undefined, `id_user=${id_user}&id_match=${id_match}`);
     ajaxRequest('GET', "../php/request.php/notification_validation", display_notification);
+    ajaxRequest('GET',"../php/request.php/notification_inscription",display_notification2)
 }
 
 function display_futur_match(output) {
@@ -257,4 +259,27 @@ function modif_mdp(output) {
     } else {
         document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">" + output['message'] + "</span>";
     }
+}
+
+function display_notification2(output) {
+    $table = document.getElementById('tableau2');
+    $table.innerHTML = "<tr><th>Sport</th><th>Ville</th><th>Horaire / Date</th><th>Etat</th></tr>";
+    console.log(output);
+    output.forEach(element => {
+        
+        if (element['ischeck'] == false && element['confirmation'] == false ){
+            var state = "En attente";
+        }
+        if (element['ischeck'] == true && element['confirmation'] == false ){
+            var state = "Refusé";
+        }
+        if (element['confirmation'] == true ){
+            var state = "Accepté";
+        }
+        
+        $table.innerHTML += "<tr><td>" + element['sport'] + "</td><td>" + element['city'] + "</td><td>" + element['date_match'] + "</td><td>"+ state + "</td></tr>";
+    });
+
+
+
 }

@@ -102,7 +102,7 @@
 
         $id_user = $_SESSION['id_user'];
         $response = get_future_match($db,$id_user);
-       echo json_encode($response);
+        echo json_encode($response);
     }
     if($requestMethod == 'GET' and $requestRessource == "past_match"){
 
@@ -162,4 +162,9 @@
     }
     // fin modification compte
 
+    if($requestMethod == 'GET' and $requestRessource == "notification_inscription"){
+        $id_user = $_SESSION["id_user"];
+        $response = get_inscriptions($db,$id_user);
+        echo json_encode($response);
+    }
 ?>

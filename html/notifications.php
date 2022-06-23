@@ -48,30 +48,8 @@
         <div class="container mx-2" style="border-radius: 10px; background-color: #4F5B5E; top : 50px; margin-left: auto; margin-right: auto;">
             <div class="card-body p-4">
                 <h3 class="text-uppercase text-center mb-5" style="color: #FFFFFF;">Mes inscriptions</h3>
-                <table class="table" style="color: #FFFFFF;">
-                    <tr>
-                        <th>
-                            Sport
-                        </th>
-                        <th>
-                            Ville
-                        </th>
-                        <th>
-                            Joueurs Max
-                        </th>
-                        <th>
-                            Inscrits
-                        </th>
-                        <th>
-                            Date
-                        </th>
-                        <th>
-                            Heure
-                        </th>
-                        <th>
-                                
-                        </th>
-                    </tr>
+                <table id = "tableau2" class="table" style="color: #FFFFFF;">
+                    
                 </table>
             </div>
         </div>
@@ -91,4 +69,7 @@
 <script src="../js/ajax.js"></script>
 <script src="../js/listen.js"></script>
 <script>ajaxRequest('GET',"../php/request.php/notification_validation",display_notification)</script>
+<script>ajaxRequest('GET',"../php/request.php/notification_inscription",display_notification2)</script>
+
+
 </html>
