@@ -66,13 +66,57 @@
                         <div class="col-6">
                             <input class="form-control" type="password" placeholder="Confirmation mot de passe" id="confirm_password">
                         </div>
-                        <br><br>
+                        <br><br><br>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="container justify-content-center">
+                                            <div class="row justify-content-center">
+                                                <input type="radio" id="avatar1" name="drone" value="../images/pdp/avatar1.png"checked>
+                                            </div>
+                                            <div class="row justify-content-center">   
+                                                <img src="../images/pdp/avatar1.png" alt="avatar1">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <div class="container justify-content-center">
+                                            <div class="row justify-content-center">
+                                                <input type="radio" id="avatar2" name="drone" value="../images/pdp/avatar2.png">
+                                            </div>
+                                            <div class="row justify-content-center">   
+                                                <img src="../images/pdp/avatar2.png" alt="avatar2">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <div class="container justify-content-center">
+                                            <div class="row justify-content-center">
+                                                <input type="radio" id="avatar3" name="drone" value="../images/pdp/avatar3.png">
+                                            </div>
+                                            <div class="row justify-content-center">   
+                                                <img src="../images/pdp/avatar3.png" alt="avatar3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="container justify-content-center">
+                                            <div class="row justify-content-center">
+                                                <input type="radio" id="avatar4" name="drone" value="../images/pdp/avatar4.png">
+                                            </div>
+                                            <div class="row justify-content-center">   
+                                                <img src="../images/pdp/avatar4.png" alt="avatar4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         <button id="create_account_buttom" class="btn" type="submit" style=" color:white; background: #FFA800; margin-left: auto; margin-right: auto;">Je m'inscris</button>
                     </div>
                     <br>
                     <div id="error_message"></div>
-
-
                 </div>
             </div>
     </section>

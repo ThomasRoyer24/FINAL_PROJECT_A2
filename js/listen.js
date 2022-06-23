@@ -15,6 +15,20 @@ $('#create_account_buttom').on('click', () => {
     let password = document.getElementById('password').value;
     let confirm_password = document.getElementById('confirm_password').value;
     let city = document.getElementById('city_inscription').value;
+    
+    if (document.getElementById('avatar1').checked){
+        console.log('oui')
+        var path = document.getElementById('avatar1').value;
+    }
+    if (document.getElementById('avatar2').checked){
+        var path = document.getElementById('avatar2').value;
+    }
+    if (document.getElementById('avatar3').checked){
+        var path = document.getElementById('avatar3').value;
+    }
+    if (document.getElementById('avatar4').checked){
+        var path = document.getElementById('avatar4').value;
+    }
 
     // recherche d'erreur et sinon requette ajax POST avec de la data 
     if ((mail != confirm_mail)) {
@@ -24,7 +38,7 @@ $('#create_account_buttom').on('click', () => {
     } else if ((mail != confirm_mail) || (password != confirm_password) || city == "" || password == "" || first_name == "" || last_name == "" || mail == "") {
         document.getElementById("error_message").innerHTML = "<span class=\"alert alert-danger\" role=\"alert\">Votre adresse mail deja utilisée ou information erronée</span>";
     } else {
-        ajaxRequest('POST', "../php/request.php/register", register, `mail=${mail}&password=${password}&first_name=${first_name}&last_name=${last_name}&city=${city}`);
+        ajaxRequest('POST', "../php/request.php/register", register, `mail=${mail}&password=${password}&first_name=${first_name}&last_name=${last_name}&city=${city}&path=${path}`);
     }
 })
 

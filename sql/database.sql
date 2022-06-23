@@ -25,6 +25,7 @@ CREATE TABLE public.username(
 	first_name        VARCHAR (50) NOT NULL ,
 	last_name         VARCHAR (50) NOT NULL ,
 	birth_date        TIMESTAMP   ,
+	paths			  VARCHAR(50) NOT NULL ,
 	statistics        INT  NOT NULL ,
 	rating            INT   ,
 	sports_form       VARCHAR (50)  ,

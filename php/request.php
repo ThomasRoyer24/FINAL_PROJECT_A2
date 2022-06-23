@@ -21,7 +21,8 @@
             $city = $_POST['city'];
             $mail = $_POST['mail'];
             $password = $_POST['password'];
-            $response = add_user($db,$mail,$last_name,$first_name,$city,$password);
+            $path = $_POST['path'];
+            $response = add_user($db,$mail,$last_name,$first_name,$city,$password,$path);
             echo json_encode($response);
         }
     }

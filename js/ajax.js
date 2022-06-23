@@ -244,6 +244,9 @@ function display_past_match(output) {
 }
 
 function display_info_profil(output) {
+    //Add la pdp ici
+    console.log(output);
+    document.getElementById('photo').innerHTML = "<img src =\"" + output['paths'] +"\">";
     document.getElementById('match_profil').innerHTML = output['statistics'];
     document.getElementById('nom_profil').innerHTML = output['last_name'];
     document.getElementById('prenom_profil').innerHTML = output['first_name'];

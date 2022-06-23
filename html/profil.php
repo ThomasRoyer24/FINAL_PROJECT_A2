@@ -36,9 +36,8 @@
                     <div class="container" style="border-radius: 10px; background-color: #4F5B5E; top : 50px; margin-left: auto; margin-right: auto;">
                         <div class="card-body p-4">
                             <h3 class="text-uppercase text-center mb-5" style="color: #FFFFFF;">Votre profil :</h3>
-                            <img class = "displayed" src = "../images/pdp/profilepicture.jpg"style = "display: block; margin-left: auto; margin-right: auto">
+                            <div id = "photo"></div>
                             <hr>
-                            
                             <h6  style = "color :white">Nombre de matchs joués : <h8 id = "match_profil" style = "color :white"></h8></h6>
                             <h6  style = "color :white">Nom : <h8 id = "nom_profil" style = "color :white"></h8></h6>
                             <h6  style = "color :white">Prénom : <h8 id = "prenom_profil" style = "color :white"></h8></h6>

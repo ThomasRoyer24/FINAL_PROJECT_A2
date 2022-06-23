@@ -46,7 +46,7 @@ function request_connection($db,$mail,$password){
 //** Function that add a user to the database */
 //** Args => Mail | Last_name | first_name | city | Password */
 
-function add_user($db,$mail,$last_name,$first_name,$city,$password){
+function add_user($db,$mail,$last_name,$first_name,$city,$password,$path){
     $response = array();
     try {
         $is_registered = false;
@@ -72,7 +72,7 @@ function add_user($db,$mail,$last_name,$first_name,$city,$password){
     if (!$is_registered) {
         try {
             
-            $request = "INSERT INTO username (mail, last_name, first_name, id_localisation,password,statistics) VALUES (:mail,:last_name, :first_name,:id_localisation,:password,0)";
+            $request = "INSERT INTO username (mail, last_name, first_name, id_localisation,password,statistics,paths) VALUES (:mail,:last_name, :first_name,:id_localisation,:password,0,:path)";
             $statement = $db->prepare($request);
 
             $statement->bindParam(':mail', $mail);
@@ -80,6 +80,7 @@ function add_user($db,$mail,$last_name,$first_name,$city,$password){
             $statement->bindParam(':first_name', $first_name);
             $statement->bindParam(':id_localisation',$id_localisation);
             $statement->bindParam(':password', $password);
+            $statement->bindParam(':path', $path);
             $statement->execute();
             $response['isSuccess'] = true;
             $response['message'] = "Votre compte à bien été crée";
@@ -469,7 +470,7 @@ function get_past_match($db,$id_user){
 
 function get_informations_profil($db,$id){
     try {
-        $request = "SELECT username.statistics, username.last_name, username.first_name, username.birth_date, localisation.city, username.sports_form, username.rating FROM username, localisation WHERE (username.id_user=:id and username.id_localisation=localisation.id_localisation)";
+        $request = "SELECT username.paths, username.statistics, username.last_name, username.first_name, username.birth_date, localisation.city, username.sports_form, username.rating FROM username, localisation WHERE (username.id_user=:id and username.id_localisation=localisation.id_localisation)";
         $statement = $db->prepare($request);
         $statement->bindParam(':id', $id);
         $statement->execute();
